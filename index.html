@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="ko" class="lang-ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DUMIR 두미르 | A Specialist Group in Cultural Contents &amp; TV Production</title>
+<meta name="description" content="주식회사 두미르 — 2000년부터 방송, 공연, 전시, 프로모션 전 영역의 문화콘텐츠를 기획·제작해온 콘텐츠 전문기업.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0908'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%23cda15b' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#0a0908; --ink2:#131110; --ink3:#1b1815;
+  --paper:#f6f1e7; --paper-dim:#cfc6b6;
+  --gold:#cda15b; --gold-2:#eccd9a; --gold-dim:#8a6e3f;
+  --wine:#7c2230; --wine-2:#a53347;
+  --line: rgba(246,241,231,0.14);
+  --line-strong: rgba(246,241,231,0.26);
+  --muted:#a89a89;
+  --shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--ink); color:var(--paper);
+  font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-weight:400; line-height:1.6; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+ul{list-style:none;}
+.lang-ko .t-en, .lang-en .t-ko{display:none !important;}
+
+/* ---------- layout helpers ---------- */
+.wrap{max-width:1240px; margin:0 auto; padding:0 32px;}
+@media(max-width:640px){.wrap{padding:0 22px;}}
+.section{padding:clamp(72px,10vw,148px) 0;}
+.section-alt{background:var(--ink2);}
+.eyebrow{
+  display:flex; align-items:center; gap:12px;
+  font-size:13px; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--gold); font-weight:600; margin-bottom:22px;
+}
+.eyebrow::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--gold); box-shadow:0 0 12px 2px var(--gold);}
+.head-row{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:52px;}
+h2.title{
+  font-size:clamp(28px,4.2vw,46px); font-weight:800; letter-spacing:-.01em; line-height:1.2;
+}
+.title small{display:block; font-size:.42em; font-weight:600; color:var(--muted); letter-spacing:.14em; margin-top:10px; text-transform:uppercase;}
+.lede{max-width:560px; color:var(--paper-dim); font-size:16px; line-height:1.8; font-weight:300;}
+.btn{
+  display:inline-flex; align-items:center; gap:10px; padding:14px 30px; border-radius:999px;
+  border:1px solid var(--line-strong); font-size:14px; font-weight:600; letter-spacing:.02em;
+  transition:all .35s var(--ease); white-space:nowrap;
+}
+.btn:hover{border-color:var(--gold); background:var(--gold); color:var(--ink);}
+.btn.solid{background:var(--gold); color:var(--ink); border-color:var(--gold);}
+.btn.solid:hover{background:var(--gold-2); border-color:var(--gold-2);}
+.btn svg{width:14px; height:14px; transition:transform .35s var(--ease);}
+.btn:hover svg{transform:translateX(4px);}
+
+/* reveal on scroll */
+.reveal{opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease);}
+.reveal.in{opacity:1; transform:none;}
+
+/* ---------- header ---------- */
+header{
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:22px 40px; transition:all .4s var(--ease);
+  background:linear-gradient(to bottom, rgba(10,9,8,.75), transparent);
+}
+@media(max-width:640px){header{padding:18px 20px;}}
+header.scrolled{
+  padding:14px 40px; background:rgba(10,9,8,.86); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+@media(max-width:640px){header.scrolled{padding:12px 20px;}}
+.logo{display:flex; align-items:baseline; gap:9px; font-weight:800; font-size:21px; letter-spacing:.04em;}
+.logo .mark{color:var(--gold);}
+.logo .since{font-size:10px; font-weight:600; letter-spacing:.22em; color:var(--muted); text-transform:uppercase;}
+nav.mainnav{display:flex; align-items:center; gap:38px;}
+nav.mainnav a{font-size:14px; font-weight:500; color:var(--paper-dim); position:relative; padding:4px 0;}
+nav.mainnav a::after{content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--gold); transition:width .3s var(--ease);}
+nav.mainnav a:hover{color:var(--paper);}
+nav.mainnav a:hover::after{width:100%;}
+.header-right{display:flex; align-items:center; gap:22px;}
+.langswitch{display:flex; align-items:center; gap:2px; border:1px solid var(--line-strong); border-radius:999px; padding:3px; font-size:12px; font-weight:700;}
+.langswitch button{padding:6px 13px; border-radius:999px; color:var(--muted); letter-spacing:.04em;}
+.langswitch button.active{background:var(--gold); color:var(--ink);}
+.burger{display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:210;}
+.burger span{width:24px; height:2px; background:var(--paper);}
+@media(max-width:900px){
+  nav.mainnav{position:fixed; inset:0; background:rgba(10,9,8,.98); flex-direction:column; justify-content:center; gap:30px;
+    opacity:0; pointer-events:none; transition:opacity .35s var(--ease);}
+  nav.mainnav.open{opacity:1; pointer-events:auto;}
+  nav.mainnav a{font-size:22px;}
+  .burger{display:flex;}
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative; min-height:100vh; display:flex; align-items:flex-end;
+  background:#000;
+}
+.hero-media{position:absolute; inset:0; overflow:hidden;}
+.hero-media img{width:100%; height:100%; object-fit:cover; object-position:center 30%; opacity:.62; transform:scale(1.06);}
+.hero-media::after{
+  content:''; position:absolute; inset:0;
+  background:
+    linear-gradient(to top, var(--ink) 2%, rgba(10,9,8,.35) 46%, rgba(10,9,8,.55) 100%),
+    linear-gradient(to right, rgba(10,9,8,.5), transparent 55%);
+}
+.hero-inner{position:relative; z-index:2; padding:0 40px 100px; width:100%;}
+@media(max-width:640px){.hero-inner{padding:0 22px 72px;}}
+.hero h1{
+  font-size:clamp(34px,6.4vw,80px); font-weight:800; letter-spacing:-.02em; line-height:1.12;
+  max-width:920px; margin-bottom:26px;
+}
+.hero h1 em{font-style:normal; color:var(--gold);}
+.hero p.sub{max-width:560px; color:var(--paper-dim); font-size:clamp(15px,1.6vw,18px); font-weight:300; line-height:1.8; margin-bottom:40px;}
+.hero-cta{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:64px;}
+.hero-stats{display:flex; gap:clamp(28px,5vw,64px); flex-wrap:wrap; border-top:1px solid var(--line); padding-top:32px;}
+.hero-stats .stat b{display:block; font-size:clamp(22px,3vw,32px); font-weight:800; color:var(--gold-2); letter-spacing:-.01em;}
+.hero-stats .stat span{font-size:12px; color:var(--muted); letter-spacing:.05em;}
+.scrolldown{position:absolute; right:40px; bottom:36px; z-index:2; display:flex; flex-direction:column; align-items:center; gap:10px; color:var(--muted); font-size:11px; letter-spacing:.2em;}
+@media(max-width:640px){.scrolldown{display:none;}}
+.scrolldown .line{width:1px; height:46px; background:linear-gradient(var(--gold), transparent); animation:down 1.8s infinite;}
+@keyframes down{0%{transform:scaleY(0); transform-origin:top;} 50%{transform:scaleY(1); transform-origin:top;} 51%{transform-origin:bottom;} 100%{transform:scaleY(0); transform-origin:bottom;}}
+
+/* ---------- about ---------- */
+.about-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:70px; align-items:start;}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr; gap:44px;}}
+.about-copy p{color:var(--paper-dim); font-size:16px; line-height:1.95; font-weight:300; margin-bottom:18px;}
+.factsheet{border-top:1px solid var(--line);}
+.factsheet .row{display:grid; grid-template-columns:120px 1fr; gap:18px; padding:16px 0; border-bottom:1px solid var(--line);}
+.factsheet .row b{font-size:13px; color:var(--gold); font-weight:600; letter-spacing:.03em;}
+.factsheet .row div{font-size:14.5px; color:var(--paper-dim); line-height:1.7;}
+.factsheet .row a{color:var(--paper-dim); border-bottom:1px dotted var(--line-strong);}
+.factsheet .row a:hover{color:var(--gold);}
+
+/* ---------- pillars ---------- */
+.pillars{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:10px;}
+@media(max-width:900px){.pillars{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.pillars{grid-template-columns:1fr;}}
+.pillar{background:var(--ink); padding:38px 30px; transition:background .4s var(--ease);}
+.pillar:hover{background:var(--ink3);}
+.pillar .num{font-size:12px; color:var(--gold-dim); font-weight:700; letter-spacing:.1em; margin-bottom:22px;}
+.pillar .icon{width:40px; height:40px; margin-bottom:22px; color:var(--gold);}
+.pillar .icon svg{width:100%; height:100%;}
+.pillar h3{font-size:19px; font-weight:700; margin-bottom:6px; letter-spacing:-.01em;}
+.pillar h3 .en-sub{display:block; font-size:11px; color:var(--muted); font-weight:600; letter-spacing:.12em; text-transform:uppercase; margin-top:5px;}
+.pillar p{font-size:13.5px; color:var(--paper-dim); line-height:1.75; font-weight:300;}
+.pillar .yr{margin-top:18px; font-size:11px; color:var(--gold-dim); letter-spacing:.08em;}
+
+/* timeline */
+.timeline{display:flex; align-items:center; gap:0; margin-top:60px; position:relative;}
+.timeline::before{content:''; position:absolute; left:0; right:0; top:11px; height:1px; background:var(--line-strong);}
+.tl-item{flex:1; position:relative; text-align:left; padding-top:30px;}
+.tl-item::before{content:''; position:absolute; top:6px; left:0; width:11px; height:11px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 4px var(--ink), 0 0 0 5px var(--line-strong);}
+.tl-item b{display:block; font-size:14px; color:var(--paper); font-weight:700; margin-bottom:3px;}
+.tl-item span{font-size:12px; color:var(--muted);}
+@media(max-width:700px){.timeline{flex-direction:column; align-items:flex-start; gap:26px;} .timeline::before{display:none;} .tl-item{padding-top:0; padding-left:24px; border-left:1px solid var(--line-strong);} .tl-item::before{top:4px; left:-6px;}}
+
+/* ---------- org chart ---------- */
+.org{display:flex; flex-direction:column; align-items:center; gap:0; margin-top:20px;}
+.org-row{display:flex; justify-content:center; gap:16px; flex-wrap:wrap; position:relative; z-index:1;}
+.org-node{
+  border:1px solid var(--line-strong); border-radius:14px; padding:16px 22px; font-size:13.5px; font-weight:600;
+  background:var(--ink2); text-align:center; min-width:130px;
+}
+.org-node.ceo{background:var(--wine); border-color:var(--wine-2); color:var(--paper); font-size:15px; min-width:170px; padding:20px 26px;}
+.org-node.core{border-color:var(--gold-dim); color:var(--gold-2);}
+.org-connector{width:1px; height:34px; background:var(--line-strong);}
+.org-caption{margin-top:34px; font-size:13px; color:var(--muted); letter-spacing:.03em; text-align:center;}
+
+/* ---------- tabs / portfolio ---------- */
+.tabbar{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:48px;}
+.tabbtn{
+  padding:12px 24px; border-radius:999px; border:1px solid var(--line-strong); font-size:13.5px; font-weight:600;
+  color:var(--paper-dim); transition:all .3s var(--ease); cursor:pointer; background:transparent;
+}
+.tabbtn.active{background:var(--gold); border-color:var(--gold); color:var(--ink);}
+.tabbtn:hover:not(.active){border-color:var(--gold); color:var(--gold-2);}
+.tabpanel{display:none;}
+.tabpanel.active{display:block;}
+.panel-intro{color:var(--paper-dim); font-size:14.5px; max-width:640px; margin-bottom:36px; font-weight:300; line-height:1.8;}
+
+.cards{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.cards{grid-template-columns:1fr;}}
+.card{
+  background:var(--ink2); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+  transition:transform .4s var(--ease), border-color .4s var(--ease), box-shadow .4s var(--ease);
+}
+.card:hover{transform:translateY(-6px); border-color:var(--gold-dim); box-shadow:var(--shadow);}
+.card .cmedia{aspect-ratio:4/5; overflow:hidden; background:var(--ink3); position:relative;}
+.card .cmedia img{width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease);}
+.card:hover .cmedia img{transform:scale(1.06);}
+.card .cmedia .tag{position:absolute; top:12px; left:12px; background:rgba(10,9,8,.72); backdrop-filter:blur(6px); padding:5px 12px; border-radius:999px; font-size:11px; font-weight:700; color:var(--gold-2); letter-spacing:.04em;}
+.card .cbody{padding:20px 22px 24px;}
+.card .cbody .yr{font-size:11.5px; color:var(--gold-dim); font-weight:700; letter-spacing:.06em; margin-bottom:8px;}
+.card .cbody h4{font-size:16.5px; font-weight:700; margin-bottom:8px; line-height:1.4;}
+.card .cbody p{font-size:13px; color:var(--paper-dim); font-weight:300; line-height:1.7;}
+.card .cbody .meta{margin-top:12px; font-size:11.5px; color:var(--muted); display:flex; flex-wrap:wrap; gap:6px 14px;}
+.card.text-card .cmedia{aspect-ratio:16/10; display:flex; align-items:center; justify-content:center; padding:26px; text-align:center;}
+.card.text-card .cmedia b{font-size:20px; font-weight:800; letter-spacing:-.01em; color:var(--paper);}
+.card.text-card .cmedia span{display:block; font-size:11px; color:var(--gold-2); margin-top:8px; letter-spacing:.08em;}
+
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;}
+.chip{font-size:11px; padding:4px 10px; border:1px solid var(--line-strong); border-radius:999px; color:var(--paper-dim);}
+
+/* archive accordion */
+details.archive{margin-top:8px; border-top:1px solid var(--line);}
+details.archive summary{
+  list-style:none; cursor:pointer; padding:22px 4px; display:flex; align-items:center; justify-content:space-between;
+  font-size:14px; font-weight:700; color:var(--gold-2); letter-spacing:.02em;
+}
+details.archive summary::-webkit-details-marker{display:none;}
+details.archive summary .plus{width:22px; height:22px; border:1px solid var(--gold-dim); border-radius:50%; position:relative; flex-shrink:0;}
+details.archive summary .plus::before, details.archive summary .plus::after{content:''; position:absolute; background:var(--gold); left:50%; top:50%; transform:translate(-50%,-50%);}
+details.archive summary .plus::before{width:9px; height:1px;}
+details.archive summary .plus::after{width:1px; height:9px; transition:opacity .2s;}
+details.archive[open] summary .plus::after{opacity:0;}
+.archive-list{padding:4px 4px 30px;}
+.arc-row{display:grid; grid-template-columns:90px 1fr auto; gap:14px; padding:13px 0; border-bottom:1px solid var(--line); font-size:13.5px;}
+@media(max-width:640px){.arc-row{grid-template-columns:70px 1fr; row-gap:4px;} .arc-row .arc-venue{grid-column:2;}}
+.arc-row .arc-yr{color:var(--gold-dim); font-weight:700; font-size:12.5px;}
+.arc-row .arc-name{color:var(--paper); font-weight:500;}
+.arc-row .arc-venue{color:var(--muted); font-size:12.5px; text-align:right;}
+@media(max-width:640px){.arc-row .arc-venue{text-align:left;}}
+
+/* poster strip marquee */
+.marquee-wrap{overflow:hidden; position:relative; margin:56px 0 0; -webkit-mask-image:linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); mask-image:linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);}
+.marquee{display:flex; gap:18px; width:max-content; animation:scroll 42s linear infinite;}
+.marquee img{height:220px; width:auto; border-radius:10px; border:1px solid var(--line);}
+@keyframes scroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+/* divider banner */
+.divider-banner{position:relative; height:34vh; min-height:220px; overflow:hidden;}
+.divider-banner img{width:100%; height:100%; object-fit:cover; filter:saturate(1.05);}
+.divider-banner::after{content:''; position:absolute; inset:0; background:linear-gradient(to bottom, var(--ink), transparent 20%, transparent 80%, var(--ink));}
+.divider-banner .quote{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:0 24px;}
+.divider-banner .quote p{font-size:clamp(17px,2.4vw,26px); font-weight:600; max-width:820px; line-height:1.6; color:var(--paper);}
+.divider-banner .quote span{color:var(--gold-2);}
+
+/* partners */
+.partners-band{border:1px solid var(--line); border-radius:16px; overflow:hidden; padding:30px 26px; background:var(--ink2);}
+.partners-band img{opacity:.86; filter:grayscale(.15);}
+.partner-note{margin-top:24px; font-size:13px; color:var(--muted); text-align:center; max-width:640px; margin-left:auto; margin-right:auto; line-height:1.8;}
+
+/* contact */
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr; gap:36px;}}
+.contact-item{display:flex; gap:18px; padding:22px 0; border-bottom:1px solid var(--line);}
+.contact-item .ic{width:22px; height:22px; color:var(--gold); flex-shrink:0; margin-top:2px;}
+.contact-item .ic svg{width:100%; height:100%;}
+.contact-item b{display:block; font-size:12px; color:var(--gold-2); letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px;}
+.contact-item div, .contact-item a{font-size:15.5px; color:var(--paper-dim); line-height:1.7;}
+.contact-item a:hover{color:var(--gold);}
+.map-card{border:1px solid var(--line); border-radius:16px; padding:34px; background:var(--ink2); display:flex; flex-direction:column; justify-content:space-between; min-height:280px;}
+.map-card h4{font-size:20px; font-weight:700; margin-bottom:14px;}
+.map-card p{font-size:14px; color:var(--paper-dim); line-height:1.8; font-weight:300; margin-bottom:26px;}
+
+/* footer */
+footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--ink);}
+.foot-grid{display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-bottom:40px;}
+.foot-logo{font-size:24px; font-weight:800; margin-bottom:14px;}
+.foot-logo .mark{color:var(--gold);}
+.foot-col p, .foot-col li{font-size:13px; color:var(--muted); line-height:2;}
+.foot-col b{display:block; font-size:12px; color:var(--gold-2); letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px;}
+.foot-bottom{border-top:1px solid var(--line); padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:12px; color:var(--muted);}
+
+/* back to top */
+.totop{position:fixed; right:26px; bottom:26px; width:46px; height:46px; border-radius:50%; border:1px solid var(--line-strong); background:rgba(10,9,8,.7); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; z-index:150; opacity:0; pointer-events:none; transition:opacity .35s var(--ease), border-color .3s;}
+.totop.show{opacity:1; pointer-events:auto;}
+.totop:hover{border-color:var(--gold);}
+.totop svg{width:16px; height:16px; color:var(--gold);}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <a href="#top" class="logo"><span class="mark">DU</span>MIR<span class="since">Since 2000</span></a>
+  <nav class="mainnav" id="mainNav">
+    <a href="#about" class="navlink">회사소개</a>
+    <a href="#business" class="navlink">사업영역</a>
+    <a href="#portfolio" class="navlink">포트폴리오</a>
+    <a href="#partners" class="navlink">파트너</a>
+    <a href="#contact" class="navlink">오시는 길</a>
+  </nav>
+  <div class="header-right">
+    <div class="langswitch">
+      <button id="btnKo" class="active">KOR</button>
+      <button id="btnEn">ENG</button>
+    </div>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-media"><img src="assets/img/hero-stadium.jpg" alt="DUMIR live concert production"></div>
+  <div class="hero-inner">
+    <h1>
+      <span class="t-ko">문화의 순간을,<br><em>두미르</em>가 만듭니다.</span>
+      <span class="t-en">DUMIR creates<br><em>cultural</em> moments.</span>
+    </h1>
+    <p class="sub">
+      <span class="t-ko">2000년부터 방송·공연·전시·프로모션 전 영역에서 대한민국을 대표하는 문화콘텐츠를 기획하고 제작해온 콘텐츠 전문기업, 두미르입니다.</span>
+      <span class="t-en">Since 2000, DUMIR has been planning and producing world-class cultural content across broadcasting, live performance, exhibitions and promotion.</span>
+    </p>
+    <div class="hero-cta">
+      <a href="#business" class="btn solid">
+        <span class="t-ko">사업영역 보기</span><span class="t-en">Our Business</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#contact" class="btn">
+        <span class="t-ko">문의하기</span><span class="t-en">Contact Us</span>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>26+</b><span class="t-ko">년의 경험</span><span class="t-en">Years of Experience</span></div>
+      <div class="stat"><b>3.2M+</b><span class="t-ko">누적 전시 관람객</span><span class="t-en">Exhibition Visitors</span></div>
+      <div class="stat"><b>7,000+</b><span class="t-ko">KBS World 방송 편수</span><span class="t-en">KBS World Episodes</span></div>
+      <div class="stat"><b>20+</b><span class="t-ko">대형 콘서트·페스티벌</span><span class="t-en">Major Concerts &amp; Festivals</span></div>
+    </div>
+  </div>
+  <div class="scrolldown"><span class="t-ko">SCROLL</span><span class="t-en">SCROLL</span><div class="line"></div></div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="eyebrow"><span class="t-ko">회사소개</span><span class="t-en">Introduction</span></div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <h2 class="title" style="margin-bottom:28px;">
+          <span class="t-ko">방송에서 전시까지,<br>하나의 팀이 만드는<br>문화콘텐츠</span>
+          <span class="t-en">From broadcast to exhibition —<br>cultural content built<br>by one team</span>
+        </h2>
+        <p class="t-ko">(주)두미르는 2000년 설립하여 방송, 영상, 공연, 문화예술 콘텐츠를 기획·주관·제작하는 콘텐츠 전문 기업입니다. 2000년 공중파 방송 프로그램 제작을 시작으로 기업홍보, 축제이벤트, 국내 작품 해외 공연, 유럽 클래식 내한공연, 유럽 미술관 블록버스터 국내 특별전 등 대형 국제 이벤트와 다양한 글로벌 문화예술 콘텐츠 보급 사업을 전개하고 있습니다.</p>
+        <p class="t-ko">우수한 콘텐츠 제작 능력과 기획력을 바탕으로 다양한 프로젝트를 성공적으로 수행해왔으며, 국내외 문화예술기관 및 언론사들과 깊은 신뢰 속에 다양한 글로벌 문화콘텐츠 기획사업을 주관하고 있습니다. 국제 문화예술콘텐츠 사업의 경험을 바탕으로 세계 각국의 문화 선진국들과 긴밀한 교류 관계를 형성하며, 대중 및 순수예술 진흥과 문화 평등에 기여하기 위해 최선을 다하고 있습니다.</p>
+        <p class="t-en">Founded in 2000, DUMIR Co., Ltd. is a specialist content company that plans, organizes and produces broadcasting, video, performance and cultural-arts content. Beginning with terrestrial TV program production in 2000, we have expanded into corporate promotional films, festival events, overseas performances of Korean works, European classical concerts, and blockbuster international art exhibitions from Europe's leading museums.</p>
+        <p class="t-en">Backed by outstanding production capability and planning expertise, we have successfully delivered a wide range of projects and continue to organize global cultural content programs in deep partnership with cultural institutions and press at home and abroad. Drawing on our international experience, we maintain close exchange relationships with culturally advanced nations, working to promote the arts and cultural equality both in Korea and beyond.</p>
+      </div>
+      <div class="reveal">
+        <div class="factsheet">
+          <div class="row"><b class="t-ko">기업명칭</b><b class="t-en">Company</b><div><span class="t-ko">주식회사 두미르</span><span class="t-en">DUMIR Co., Ltd.</span></div></div>
+          <div class="row"><b class="t-ko">설립일</b><b class="t-en">Founded</b><div><span class="t-ko">2000년 4월</span><span class="t-en">April, 2000</span></div></div>
+          <div class="row"><b class="t-ko">대표이사</b><b class="t-en">CEO</b><div>고필규 <span class="t-ko">(Go Pil-gyu)</span><span class="t-en">Go Pil-gyu</span></div></div>
+          <div class="row"><b class="t-ko">사업자등록번호</b><b class="t-en">Reg. No.</b><div>107-81-81661</div></div>
+          <div class="row"><b class="t-ko">사업영역</b><b class="t-en">Business</b><div><span class="t-ko">공연기획·제작 / 국제전시기획·제작 / 이벤트 제작 / 콘텐츠 영상 제작(TV프로그램·광고영상·기업홍보)</span><span class="t-en">Performance &amp; Exhibition Planning/Production, Event Production, Content &amp; Video Production (TV Programs, Advertising, Corporate Promotion)</span></div></div>
+          <div class="row"><b class="t-ko">주소</b><b class="t-en">Address</b><div><span class="t-ko">(07545) 서울특별시 강서구 양천로 615, 3층</span><span class="t-en">3F, 615 Yangcheon-ro, Gangseo-gu, Seoul, Korea (07545)</span></div></div>
+          <div class="row"><b class="t-ko">연락처</b><b class="t-en">Contact</b><div>Tel. 02-782-7015 &nbsp;/&nbsp; Fax. 02-782-7016</div></div>
+          <div class="row"><b>Email</b><div><a href="mailto:dumir2000@hanmail.net">dumir2000@hanmail.net</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BUSINESS / PILLARS ================= -->
+<section class="section section-alt" id="business">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="eyebrow"><span class="t-ko">사업영역</span><span class="t-en">Contents Business</span></div>
+        <h2 class="title"><span class="t-ko">네 개의 축, 하나의 콘텐츠</span><span class="t-en">Four Pillars, One Content Vision</span></h2>
+      </div>
+      <p class="lede"><span class="t-ko">TV 제작을 시작으로 프로모션, 전시, 공연예술까지 — 두미르는 서로 다른 4개 영역을 유기적으로 연결해 완성도 높은 문화콘텐츠를 만듭니다.</span><span class="t-en">Starting with TV production and expanding into promotion, exhibition and performing arts — DUMIR connects four distinct domains into one seamless cultural content practice.</span></p>
+    </div>
+
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="num">01</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 18v3"/></svg></div>
+        <h3><span class="t-ko">TV 제작</span><span class="t-en">TV Production</span><span class="en-sub">Since 2000</span></h3>
+        <p class="t-ko">지상파 정규 프로그램 제작과 KBS World 해외 송출 콘텐츠 제작까지, 방송 콘텐츠의 시작점입니다.</p>
+        <p class="t-en">From terrestrial TV programs to KBS World's international broadcast content — the origin of our content practice.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">02</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11l18-7-7 18-2-8-8-2z"/></svg></div>
+        <h3><span class="t-ko">프로모션</span><span class="t-en">Promotion &amp; Other</span><span class="en-sub">Since 2002</span></h3>
+        <p class="t-ko">공공기관·기업 홍보영상, 지역축제, 컨벤션 이벤트를 기획하고 제작합니다.</p>
+        <p class="t-en">Promotional films for public institutions and enterprises, regional festivals, and convention events.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">03</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="1.5"/><circle cx="9.5" cy="10" r="1.7"/><path d="M4 16l5-4 4 3 3-2.5 4 3.5"/></svg></div>
+        <h3><span class="t-ko">전시</span><span class="t-en">Exhibition</span><span class="en-sub">Since 2004</span></h3>
+        <p class="t-ko">샤갈·피카소·모네·투탕카멘 등 세계적 거장의 작품을 국내에 소개하는 블록버스터 특별전을 주관합니다.</p>
+        <p class="t-en">Blockbuster special exhibitions bringing world masters — Chagall, Picasso, Monet, Tutankhamun — to Korea.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">04</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg></div>
+        <h3><span class="t-ko">공연예술</span><span class="t-en">Performing Arts</span><span class="en-sub">Since 2006</span></h3>
+        <p class="t-ko">K-POP 페스티벌부터 유럽 클래식 내한공연, 시상식까지 라이브 공연을 기획·제작합니다.</p>
+        <p class="t-en">From K-POP festivals to European classical tours and televised awards shows — live performance production.</p>
+      </div>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="tl-item"><b>2000</b><span class="t-ko">TV 제작 설립</span><span class="t-en">TV Production Established</span></div>
+      <div class="tl-item"><b>2002</b><span class="t-ko">프로모션 사업 개시</span><span class="t-en">Promotion Business Begins</span></div>
+      <div class="tl-item"><b>2004</b><span class="t-ko">국제전시 사업 개시</span><span class="t-en">Exhibition Business Begins</span></div>
+      <div class="tl-item"><b>2006</b><span class="t-ko">공연예술 사업 개시</span><span class="t-en">Performing Arts Begins</span></div>
+      <div class="tl-item"><b>2026</b><span class="t-ko">현재, 진행형</span><span class="t-en">Today &amp; Beyond</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ORGANIZATION ================= -->
+<section class="section" id="organization">
+  <div class="wrap">
+    <div class="eyebrow"><span class="t-ko">조직도</span><span class="t-en">Organization</span></div>
+    <h2 class="title" style="margin-bottom:50px;"><span class="t-ko">문화콘텐츠 &amp; TV 제작 전문 그룹</span><span class="t-en">A Specialist Group in Cultural Contents &amp; TV Production</span></h2>
+    <div class="org reveal">
+      <div class="org-node ceo">CEO</div>
+      <div class="org-connector"></div>
+      <div class="org-row">
+        <div class="org-node"><span class="t-ko">재무</span><span class="t-en">Finance</span></div>
+        <div class="org-node core"><span class="t-ko">기획팀 · 프로듀서</span><span class="t-en">Planning Team · Producer</span></div>
+        <div class="org-node"><span class="t-ko">회계</span><span class="t-en">Accountant</span></div>
+      </div>
+      <div class="org-connector"></div>
+      <div class="org-row">
+        <div class="org-node"><span class="t-ko">디자인팀</span><span class="t-en">Design Team</span></div>
+        <div class="org-node"><span class="t-ko">기술제작팀</span><span class="t-en">Technical Production Team</span></div>
+        <div class="org-node"><span class="t-ko">연출팀</span><span class="t-en">Director Team</span></div>
+        <div class="org-node"><span class="t-ko">마케팅팀</span><span class="t-en">Marketing Team</span></div>
+        <div class="org-node"><span class="t-ko">운영관리팀</span><span class="t-en">Management Team</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-banner">
+  <img src="assets/img/hero-crowd.jpg" alt="DUMIR audience">
+  <div class="quote">
+    <p><span class="t-ko">25년간 두미르는 <span>3,280,000명</span>의 관객과<br>함께 순간을 만들어왔습니다.</span>
+    <span class="t-en">For over two decades, DUMIR has created moments<br>shared with <span>3,280,000</span> audience members.</span></p>
+  </div>
+</div>
+
+<!-- ================= PORTFOLIO ================= -->
+<section class="section" id="portfolio">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="eyebrow"><span class="t-ko">포트폴리오</span><span class="t-en">Portfolio</span></div>
+        <h2 class="title"><span class="t-ko">두미르가 만들어온 순간들</span><span class="t-en">Moments DUMIR Has Built</span></h2>
+      </div>
+      <p class="lede"><span class="t-ko">공연, 전시, 방송, 프로모션 — 각 영역별 대표 프로젝트를 소개합니다. 전체 프로젝트는 각 항목의 '전체보기'에서 확인하실 수 있습니다.</span><span class="t-en">Explore representative projects across performing arts, exhibition, TV production and promotion. Click "View all" under each category for the complete archive.</span></p>
+      </div>
+
+    <div class="tabbar">
+      <button class="tabbtn active" data-tab="perf"><span class="t-ko">공연예술</span><span class="t-en">Performing Arts</span></button>
+      <button class="tabbtn" data-tab="exh"><span class="t-ko">전시</span><span class="t-en">Exhibition</span></button>
+      <button class="tabbtn" data-tab="tv"><span class="t-ko">TV 제작</span><span class="t-en">TV Production</span></button>
+      <button class="tabbtn" data-tab="promo"><span class="t-ko">프로모션</span><span class="t-en">Promotion &amp; Other</span></button>
+    </div>
+
+    <!-- PERFORMING ARTS -->
+    <div class="tabpanel active" id="panel-perf">
+      <p class="panel-intro t-ko">국내 최대 규모 K-POP 페스티벌부터 세계 정상급 오케스트라의 내한공연, 지상파 시상식까지 — 두미르는 20년 넘게 라이브 무대의 최전선에 있었습니다.</p>
+      <p class="panel-intro t-en">From Korea's largest K-POP festivals to world-class orchestra tours and national broadcast awards shows — DUMIR has stood at the frontline of live performance for over two decades.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">K-POP·페스티벌</span><span class="tag t-en">K-POP · Festival</span>
+            <div style="width:100%;height:100%;background:linear-gradient(155deg,#241a12,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
+              <b style="font-size:19px;font-weight:800;line-height:1.4;">아시아송페스티벌<br><span style="font-size:12px;color:var(--gold-2);letter-spacing:.08em;font-weight:600;">ASIA SONG FESTIVAL</span></b>
+            </div>
+          </div>
+          <div class="cbody">
+            <div class="yr">2013 – 2015 · 10th–12th</div>
+            <h4><span class="t-ko">아시아송페스티벌</span><span class="t-en">Asia Song Festival</span></h4>
+            <p class="t-ko">잠실주경기장 · 프로덕션</p><p class="t-en">Jamsil Main Stadium · Production</p>
+            <div class="chips"><span class="chip">EXO</span><span class="chip">BTS</span><span class="chip">Red Velvet</span><span class="chip">TWICE</span><span class="chip">GOT7</span><span class="chip">SEVENTEEN</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">클래식</span><span class="tag t-en">Classical</span>
+            <div style="width:100%;height:100%;background:linear-gradient(155deg,#1c1512,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
+              <b style="font-size:18px;font-weight:800;line-height:1.4;">월드유니온오케스트라<br>슈퍼클래식<br><span style="font-size:12px;color:var(--gold-2);letter-spacing:.06em;font-weight:600;">WORLD UNION ORCHESTRA</span></b>
+            </div>
+          </div>
+          <div class="cbody">
+            <div class="yr">2024</div>
+            <h4><span class="t-ko">김호중 &amp; 프리마돈나</span><span class="t-en">Kim Ho-joong &amp; Prima Donna</span></h4>
+            <p class="t-ko">올림픽체조경기장 · 기획/프로덕션</p><p class="t-en">Olympic Gymnastics Arena · Planning &amp; Production</p>
+            <div class="chips"><span class="chip">Wien &amp; Berlin Phil.</span><span class="chip">New York Phil.</span><span class="chip">Royal Concertgebouw</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">페스티벌</span><span class="tag t-en">Festival</span>
+            <div style="width:100%;height:100%;background:linear-gradient(155deg,#221a12,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
+              <b style="font-size:19px;font-weight:800;line-height:1.4;">인천공항<br>스카이페스티벌</b>
+            </div>
+          </div>
+          <div class="cbody">
+            <div class="yr">2017 – 2018 · 12th–13th</div>
+            <h4><span class="t-ko">인천공항 스카이페스티벌</span><span class="t-en">Incheon Airport Sky Festival</span></h4>
+            <p class="t-ko">인천공항 잔디광장 · 프로덕션</p><p class="t-en">Incheon Airport Lawn Square · Production</p>
+            <div class="chips"><span class="chip">EXO</span><span class="chip">NCT 127</span><span class="chip">2PM</span><span class="chip">Wanna One</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">국가행사</span><span class="tag t-en">National Event</span>
+            <div style="width:100%;height:100%;background:linear-gradient(155deg,#1e1a12,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
+              <b style="font-size:18px;font-weight:800;line-height:1.4;">2018 평창동계올림픽<br>감사대축제</b>
+            </div>
+          </div>
+          <div class="cbody">
+            <div class="yr">2018</div>
+            <h4><span class="t-ko">평창동계올림픽 감사대축제</span><span class="t-en">PyeongChang Winter Olympics Thanksgiving Festival</span></h4>
+            <p class="t-ko">평창 알펜시아 · 프로덕션</p><p class="t-en">PyeongChang Alpensia · Production</p>
+            <div class="chips"><span class="chip">이승철</span><span class="chip">BTOB</span><span class="chip">WJSN</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">클래식</span><span class="tag t-en">Classical</span>
+            <div style="width:100%;height:100%;background:linear-gradient(155deg,#1c1512,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
+              <b style="font-size:18px;font-weight:800;line-height:1.4;">빈필하모닉오케스트라<br>앙상블<br><span style="font-size:12px;color:var(--gold-2);letter-spacing:.06em;font-weight:600;">VIENNA PHILHARMONIC</span></b>
+            </div>
+          </div>
+          <div class="cbody">
+            <div class="yr">2019 · 2020 · 2024</div>
+            <h4><span class="t-ko">신년음악회 시리즈</span><span class="t-en">New Year Concert Series</span></h4>
+            <p class="t-ko">기획 / 프로덕션</p><p class="t-en">Planning &amp; Production</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">해외공연</span><span class="tag t-en">Overseas</span>
+            <div style="width:100%;height:100%;background:linear-gradient(155deg,#241a12,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
+              <b style="font-size:20px;font-weight:800;line-height:1.4;">난타<br>비엔나 공연</b>
+            </div>
+          </div>
+          <div class="cbody">
+            <div class="yr">2012</div>
+            <h4><span class="t-ko">난타 비엔나 공연</span><span class="t-en">NANTA Vienna Performance</span></h4>
+            <p class="t-ko">빈 슈타트할레 · 기획 및 주관</p><p class="t-en">Wiener Stadthalle · Planning &amp; Organization</p>
+          </div>
+        </div>
+      </div>
+
+      <details class="archive">
+        <summary><span><span class="t-ko">전체 공연 프로젝트 보기 (28건)</span><span class="t-en">View All Performing Arts Projects (28)</span></span><span class="plus"></span></summary>
+        <div class="archive-list">
+          <div class="arc-row"><span class="arc-yr">2002–10</span><span class="arc-name t-ko">KBS 연기대상</span><span class="arc-name t-en">KBS Drama Awards</span><span class="arc-venue t-ko">KBS별관 공개홀 · KBS2TV</span><span class="arc-venue t-en">KBS Annex Hall · KBS2TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2002–10</span><span class="arc-name t-ko">KBS 가요대상 / 가요대축제</span><span class="arc-name t-en">KBS Song Festival / Grand Music Festival</span><span class="arc-venue t-ko">KBS홀 · KBS2TV</span><span class="arc-venue t-en">KBS Hall · KBS2TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2002</span><span class="arc-name t-ko">부산아시아게임 전야제쇼</span><span class="arc-name t-en">Busan Asian Games Eve Show</span><span class="arc-venue t-ko">광안리 특설무대</span><span class="arc-venue t-en">Gwangalli Special Stage</span></div>
+          <div class="arc-row"><span class="arc-yr">2003</span><span class="arc-name t-ko">대구하계유니버시아드 전야제</span><span class="arc-name t-en">Daegu Summer Universiade Eve</span><span class="arc-venue t-ko">대구두류공원 특설무대</span><span class="arc-venue t-en">Daegu Duryu Park</span></div>
+          <div class="arc-row"><span class="arc-yr">2002–09</span><span class="arc-name t-ko">전국 춘향선발대회</span><span class="arc-name t-en">National Chunhyang Pageant</span><span class="arc-venue t-ko">남원 광한루 일원 · KBS2TV</span><span class="arc-venue t-en">Namwon Gwanghallu · KBS2TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2012</span><span class="arc-name t-ko">난타 비엔나 공연</span><span class="arc-name t-en">NANTA Vienna Performance</span><span class="arc-venue t-ko">빈 슈타트할레</span><span class="arc-venue t-en">Wiener Stadthalle</span></div>
+          <div class="arc-row"><span class="arc-yr">2014</span><span class="arc-name t-ko">블루원 드림페스티벌</span><span class="arc-name t-en">Blue One Dream Festival</span><span class="arc-venue t-ko">블루원리조트 경주</span><span class="arc-venue t-en">Blue One Resort, Gyeongju</span></div>
+          <div class="arc-row"><span class="arc-yr">2016</span><span class="arc-name t-ko">파크콘서트</span><span class="arc-name t-en">Park Concert</span><span class="arc-venue t-ko">분당호수공원</span><span class="arc-venue t-en">Bundang Lake Park</span></div>
+          <div class="arc-row"><span class="arc-yr">2013–15</span><span class="arc-name t-ko">아시아송페스티벌</span><span class="arc-name t-en">Asia Song Festival</span><span class="arc-venue t-ko">잠실주경기장</span><span class="arc-venue t-en">Jamsil Main Stadium</span></div>
+          <div class="arc-row"><span class="arc-yr">2017–18</span><span class="arc-name t-ko">인천공항 스카이페스티벌</span><span class="arc-name t-en">Incheon Airport Sky Festival</span><span class="arc-venue t-ko">인천공항 잔디광장</span><span class="arc-venue t-en">Incheon Airport Lawn Sq.</span></div>
+          <div class="arc-row"><span class="arc-yr">2018</span><span class="arc-name t-ko">부산원아시아페스티벌</span><span class="arc-name t-en">Busan One Asia Festival</span><span class="arc-venue t-ko">벡스코</span><span class="arc-venue t-en">BEXCO</span></div>
+          <div class="arc-row"><span class="arc-yr">2018</span><span class="arc-name t-ko">평창동계올림픽 감사대축제</span><span class="arc-name t-en">PyeongChang Olympics Thanksgiving Festival</span><span class="arc-venue t-ko">평창 알펜시아</span><span class="arc-venue t-en">PyeongChang Alpensia</span></div>
+          <div class="arc-row"><span class="arc-yr">2018</span><span class="arc-name t-ko">예산군 열린음악회</span><span class="arc-name t-en">Yesan Open-Air Concert</span><span class="arc-venue t-ko">예산종합운동장</span><span class="arc-venue t-en">Yesan Stadium</span></div>
+          <div class="arc-row"><span class="arc-yr">2017</span><span class="arc-name t-ko">강진 K-POP 콘서트</span><span class="arc-name t-en">Gangjin K-POP Concert</span><span class="arc-venue t-ko">강진종합운동장</span><span class="arc-venue t-en">Gangjin Stadium</span></div>
+          <div class="arc-row"><span class="arc-yr">2019</span><span class="arc-name t-ko">강남영동대로 케이팝콘서트</span><span class="arc-name t-en">Gangnam Yeongdong-daero K-POP Concert</span><span class="arc-venue t-ko">영동대로</span><span class="arc-venue t-en">Yeongdong-daero</span></div>
+          <div class="arc-row"><span class="arc-yr">2022</span><span class="arc-name t-ko">2022 뮤직페어 (MU:CON)</span><span class="arc-name t-en">2022 Music Fair (MU:CON)</span><span class="arc-venue t-ko">노들섬 라이브하우스홀</span><span class="arc-venue t-en">Nodeul Island Live Hall</span></div>
+          <div class="arc-row"><span class="arc-yr">2020</span><span class="arc-name t-ko">잉크 케이팝콘서트</span><span class="arc-name t-en">INK K-POP Concert</span><span class="arc-venue t-ko">인천문학경기장 (비대면)</span><span class="arc-venue t-en">Incheon Munhak Stadium (Untact)</span></div>
+          <div class="arc-row"><span class="arc-yr">2023</span><span class="arc-name t-ko">2023 케이링크페스티벌</span><span class="arc-name t-en">2023 K-Link Festival</span><span class="arc-venue t-ko">잠실실내체육관</span><span class="arc-venue t-en">Jamsil Indoor Gym</span></div>
+          <div class="arc-row"><span class="arc-yr">2024</span><span class="arc-name t-ko">월드유니온오케스트라 슈퍼클래식</span><span class="arc-name t-en">World Union Orchestra Super Classic</span><span class="arc-venue t-ko">올림픽체조경기장</span><span class="arc-venue t-en">Olympic Gymnastics Arena</span></div>
+          <div class="arc-row"><span class="arc-yr">2024</span><span class="arc-name t-ko">존 윌리엄스 영화음악 시리즈</span><span class="arc-name t-en">John Williams Film Score Series</span><span class="arc-venue t-ko">월드유니온오케스트라</span><span class="arc-venue t-en">World Union Orchestra</span></div>
+          <div class="arc-row"><span class="arc-yr">2018</span><span class="arc-name t-ko">뉴욕필하모닉 스트링콰르텟 &amp; 선우예권</span><span class="arc-name t-en">NY Phil. String Quartet &amp; Yekwon Sunwoo</span><span class="arc-venue t-ko">KBS1TV 기획/프로덕션</span><span class="arc-venue t-en">KBS1TV Planning/Production</span></div>
+          <div class="arc-row"><span class="arc-yr">2018</span><span class="arc-name t-ko">국립슬로박필하모닉오케스트라 내한</span><span class="arc-name t-en">Slovak Philharmonic Orchestra Tour</span><span class="arc-venue t-ko">KBS1TV 기획/프로덕션</span><span class="arc-venue t-en">KBS1TV Planning/Production</span></div>
+          <div class="arc-row"><span class="arc-yr">2018</span><span class="arc-name t-ko">리사운드 베토벤 프롬오스트리아</span><span class="arc-name t-en">Resound Beethoven from Austria</span><span class="arc-venue t-ko">KBS1TV 기획/프로덕션</span><span class="arc-venue t-en">KBS1TV Planning/Production</span></div>
+          <div class="arc-row"><span class="arc-yr">2018</span><span class="arc-name t-ko">트리오 콘브리오 코펜하겐</span><span class="arc-name t-en">Trio Con Brio Copenhagen</span><span class="arc-venue t-ko">KBS1TV 기획/프로덕션</span><span class="arc-venue t-en">KBS1TV Planning/Production</span></div>
+          <div class="arc-row"><span class="arc-yr">2019</span><span class="arc-name t-ko">러시아 보로딘콰르텟 내한공연</span><span class="arc-name t-en">Borodin Quartet Korea Tour</span><span class="arc-venue t-ko">KBS1TV 기획/프로덕션</span><span class="arc-venue t-en">KBS1TV Planning/Production</span></div>
+          <div class="arc-row"><span class="arc-yr">2022</span><span class="arc-name t-ko">뉴욕필하모닉 스트링콰르텟 내한공연</span><span class="arc-name t-en">NY Phil. String Quartet Korea Tour</span><span class="arc-venue t-ko">기획/프로덕션</span><span class="arc-venue t-en">Planning/Production</span></div>
+          <div class="arc-row"><span class="arc-yr">2019·20·24</span><span class="arc-name t-ko">빈필하모닉오케스트라 앙상블 신년음악회</span><span class="arc-name t-en">Vienna Phil. Ensemble New Year Concert</span><span class="arc-venue t-ko">기획/프로덕션</span><span class="arc-venue t-en">Planning/Production</span></div>
+        </div>
+      </details>
+    </div>
+
+    <!-- EXHIBITION -->
+    <div class="tabpanel" id="panel-exh">
+      <p class="panel-intro t-ko">서울시립미술관, 국립현대미술관, 국립중앙박물관 등과 함께 샤갈·피카소·모네·투탕카멘 등 세계적 거장의 작품을 소개해온 국제 블록버스터 특별전 시리즈입니다.</p>
+      <p class="panel-intro t-en">A series of international blockbuster exhibitions bringing world-renowned masters — Chagall, Picasso, Monet, Tutankhamun — to Korea in partnership with the Seoul Museum of Art, MMCA, the National Museum of Korea and more.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">120점 · 40만 관객</span><span class="tag t-en">120 works · 400K visitors</span><img src="assets/img/poster-chagall.jpg" alt="Chagall 특별전"></div>
+          <div class="cbody"><div class="yr">2004 · <span class="t-ko">서울시립미술관</span><span class="t-en">Seoul Museum of Art</span></div><h4>Chagall <span class="t-ko">특별전</span></h4><p class="t-ko">Total Advertising &amp; Production</p><p class="t-en">Total Advertising &amp; Production</p></div>
+        </div>
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">137점 · 30만 관객</span><span class="tag t-en">137 works · 300K visitors</span><img src="assets/img/poster-picasso.jpg" alt="Picasso 특별전"></div>
+          <div class="cbody"><div class="yr">2006 · <span class="t-ko">서울시립미술관</span><span class="t-en">Seoul Museum of Art</span></div><h4>Picasso <span class="t-ko">특별전</span></h4><p class="t-ko">Total Advertising &amp; Production</p><p class="t-en">Total Advertising &amp; Production</p></div>
+        </div>
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">80점 · 40만 관객</span><span class="tag t-en">80 works · 400K visitors</span><img src="assets/img/poster-monet.jpg" alt="Monet 특별전"></div>
+          <div class="cbody"><div class="yr">2007 · <span class="t-ko">서울시립미술관</span><span class="t-en">Seoul Museum of Art</span></div><h4>Monet <span class="t-ko">특별전</span></h4><p class="t-ko">Total Advertising &amp; Production</p><p class="t-en">Total Advertising &amp; Production</p></div>
+        </div>
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">123점 · 18만 관객</span><span class="tag t-en">123 works · 180K visitors</span><img src="assets/img/poster-bourdelle.jpg" alt="Bourdelle 특별전"></div>
+          <div class="cbody"><div class="yr">2008 · <span class="t-ko">서울시립미술관</span><span class="t-en">Seoul Museum of Art</span></div><h4>Bourdelle <span class="t-ko">특별전</span></h4><p class="t-ko">Organization &amp; Total Advertising</p><p class="t-en">Organization &amp; Total Advertising</p></div>
+        </div>
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">232점 · 50만 관객</span><span class="tag t-en">232 works · 500K visitors</span><img src="assets/img/poster-egypt.jpg" alt="이집트 문명전"></div>
+          <div class="cbody"><div class="yr">2009 · <span class="t-ko">국립중앙박물관</span><span class="t-en">National Museum of Korea</span></div><h4><span class="t-ko">이집트 문명전 "파라오와 미라"</span><span class="t-en">Egyptian Civilization: "Pharaoh &amp; Mummy"</span></h4><p class="t-ko">Promoter &amp; Organization</p><p class="t-en">Promoter &amp; Organization</p></div>
+        </div>
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">800점 · 25만 관객</span><span class="tag t-en">800 works · 250K visitors</span><img src="assets/img/poster-tutankhamun.jpg" alt="Tutankhamun 특별전"></div>
+          <div class="cbody"><div class="yr">2011–2012 · <span class="t-ko">국립과천과학관</span><span class="t-en">Gwacheon National Science Museum</span></div><h4><span class="t-ko">투탕카멘 특별전</span><span class="t-en">Tutankhamun Special Exhibition</span></h4><p class="t-ko">Promoter &amp; Organization</p><p class="t-en">Promoter &amp; Organization</p></div>
+        </div>
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">85점 · 20만 관객</span><span class="tag t-en">85 works · 200K visitors</span><img src="assets/img/poster-ingres.jpg" alt="칸딘스키에서 앵그르까지"></div>
+          <div class="cbody"><div class="yr">2014–2015 · <span class="t-ko">예술의전당</span><span class="t-en">Seoul Arts Center</span></div><h4><span class="t-ko">칸딘스키에서 앵그르까지</span><span class="t-en">Ingres to Kandinsky</span></h4><p class="t-ko">Organization &amp; Advertising</p><p class="t-en">Organization &amp; Advertising</p></div>
+        </div>
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">400점 · 20만 관객</span><span class="tag t-en">400 works · 200K visitors</span><img src="assets/img/poster-warhol.jpg" alt="Andy Warhol Live"></div>
+          <div class="cbody"><div class="yr">2015 · DDP</div><h4><span class="t-ko">앤디워홀 라이브 특별전</span><span class="t-en">Andy Warhol Live</span></h4><p class="t-ko">Organization &amp; Advertising</p><p class="t-en">Organization &amp; Advertising</p></div>
+        </div>
+        <div class="card">
+          <div class="cmedia"><span class="tag t-ko">200점 · 15만 관객</span><span class="tag t-en">200 works · 150K visitors</span><img src="assets/img/poster-rouault.jpg" alt="Georges Rouault 특별전"></div>
+          <div class="cbody"><div class="yr">2022–2023 · <span class="t-ko">전남도립미술관</span><span class="t-en">Jeonnam Museum of Art</span></div><h4>Georges Rouault <span class="t-ko">특별전</span></h4><p class="t-ko">Organization &amp; Advertising</p><p class="t-en">Organization &amp; Advertising</p></div>
+        </div>
+      </div>
+
+      <details class="archive">
+        <summary><span><span class="t-ko">전체 전시 프로젝트 보기 (12건)</span><span class="t-en">View All Exhibition Projects (12)</span></span><span class="plus"></span></summary>
+        <div class="archive-list">
+          <div class="arc-row"><span class="arc-yr">2004</span><span class="arc-name t-ko">샤갈 특별전 · 120점 · 40만명</span><span class="arc-name t-en">Chagall · 120 works · 400K</span><span class="arc-venue t-ko">서울시립미술관</span><span class="arc-venue t-en">Seoul Museum of Art</span></div>
+          <div class="arc-row"><span class="arc-yr">2006</span><span class="arc-name t-ko">피카소 특별전 · 137점 · 30만명</span><span class="arc-name t-en">Picasso · 137 works · 300K</span><span class="arc-venue t-ko">서울시립미술관</span><span class="arc-venue t-en">Seoul Museum of Art</span></div>
+          <div class="arc-row"><span class="arc-yr">2007</span><span class="arc-name t-ko">모네 특별전 · 80점 · 40만명</span><span class="arc-name t-en">Monet · 80 works · 400K</span><span class="arc-venue t-ko">서울시립미술관</span><span class="arc-venue t-en">Seoul Museum of Art</span></div>
+          <div class="arc-row"><span class="arc-yr">2008</span><span class="arc-name t-ko">부르델 특별전 · 123점 · 18만명</span><span class="arc-name t-en">Bourdelle · 123 works · 180K</span><span class="arc-venue t-ko">서울시립미술관</span><span class="arc-venue t-en">Seoul Museum of Art</span></div>
+          <div class="arc-row"><span class="arc-yr">2009</span><span class="arc-name t-ko">이집트 문명전 "파라오와 미라" · 232점 · 50만명</span><span class="arc-name t-en">Pharaoh &amp; Mummy · 232 works · 500K</span><span class="arc-venue t-ko">국립중앙박물관</span><span class="arc-venue t-en">National Museum of Korea</span></div>
+          <div class="arc-row"><span class="arc-yr">2010</span><span class="arc-name t-ko">서울미디어아트비엔날레 · 300점 · 20만명</span><span class="arc-name t-en">Seoul Media Art Biennale · 300 works · 200K</span><span class="arc-venue t-ko">서울시립미술관</span><span class="arc-venue t-en">Seoul Museum of Art</span></div>
+          <div class="arc-row"><span class="arc-yr">2010–11</span><span class="arc-name t-ko">피카소와 모던아트 특별전 · 130점 · 30만명</span><span class="arc-name t-en">Picasso and Modern Art · 130 works · 300K</span><span class="arc-venue t-ko">국립현대미술관</span><span class="arc-venue t-en">MMCA</span></div>
+          <div class="arc-row"><span class="arc-yr">2011–12</span><span class="arc-name t-ko">투탕카멘 특별전 · 800점(레플리카) · 25만명</span><span class="arc-name t-en">Tutankhamun · 800 replicas · 250K</span><span class="arc-venue t-ko">국립과천과학관</span><span class="arc-venue t-en">Gwacheon Science Museum</span></div>
+          <div class="arc-row"><span class="arc-yr">2014–15</span><span class="arc-name t-ko">칸딘스키에서 앵그르까지 · 85점 · 20만명</span><span class="arc-name t-en">Ingres to Kandinsky · 85 works · 200K</span><span class="arc-venue t-ko">예술의전당</span><span class="arc-venue t-en">Seoul Arts Center</span></div>
+          <div class="arc-row"><span class="arc-yr">2015</span><span class="arc-name t-ko">앤디워홀 라이브 특별전 · 400점 · 20만명</span><span class="arc-name t-en">Andy Warhol Live · 400 works · 200K</span><span class="arc-venue">DDP</span></div>
+          <div class="arc-row"><span class="arc-yr">2015–16</span><span class="arc-name t-ko">국립아시아문화전당 개관전 · 290점 · 20만명</span><span class="arc-name t-en">ACC Opening Exhibition · 290 works · 200K</span><span class="arc-venue t-ko">라이브러리파크</span><span class="arc-venue t-en">Library Park</span></div>
+          <div class="arc-row"><span class="arc-yr">2022–23</span><span class="arc-name t-ko">조르주루오 특별전 · 200점 · 15만명</span><span class="arc-name t-en">Georges Rouault · 200 works · 150K</span><span class="arc-venue t-ko">전남도립미술관</span><span class="arc-venue t-en">Jeonnam Museum of Art</span></div>
+        </div>
+      </details>
+
+      <div class="marquee-wrap">
+        <div class="marquee">
+          <img src="assets/img/poster-chagall.jpg" alt=""><img src="assets/img/poster-picasso.jpg" alt=""><img src="assets/img/poster-monet.jpg" alt=""><img src="assets/img/poster-bourdelle.jpg" alt=""><img src="assets/img/poster-egypt.jpg" alt=""><img src="assets/img/poster-tutankhamun.jpg" alt=""><img src="assets/img/poster-ingres.jpg" alt=""><img src="assets/img/poster-warhol.jpg" alt=""><img src="assets/img/poster-rouault.jpg" alt="">
+          <img src="assets/img/poster-chagall.jpg" alt=""><img src="assets/img/poster-picasso.jpg" alt=""><img src="assets/img/poster-monet.jpg" alt=""><img src="assets/img/poster-bourdelle.jpg" alt=""><img src="assets/img/poster-egypt.jpg" alt=""><img src="assets/img/poster-tutankhamun.jpg" alt=""><img src="assets/img/poster-ingres.jpg" alt=""><img src="assets/img/poster-warhol.jpg" alt=""><img src="assets/img/poster-rouault.jpg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <!-- TV PRODUCTION -->
+    <div class="tabpanel" id="panel-tv">
+      <p class="panel-intro t-ko">2000년 설립 이래 KBS 정규 프로그램을 제작해왔으며, KBS World를 통해 7,000편이 넘는 한국 방송 콘텐츠를 세계에 영어로 송출했습니다.</p>
+      <p class="panel-intro t-en">Since 2000, DUMIR has produced regular KBS programs and, through KBS World, delivered over 7,000 English-subtitled episodes of Korean broadcast content worldwide.</p>
+      <div class="cards">
+        <div class="card text-card"><div class="cmedia"><b class="t-ko">도전! 지구탐험대</b><b class="t-en">Challenge! Earth Expedition</b><span>2000 – 2005 · KBS2TV</span></div></div>
+        <div class="card text-card"><div class="cmedia"><b class="t-ko">체험 삶의 현장</b><b class="t-en">Experience the Field of Life</b><span>2005 – 2012 · KBS2TV</span></div></div>
+        <div class="card text-card"><div class="cmedia"><b class="t-ko">세상의 아침</b><b class="t-en">Morning of the World</b><span>2001 – 2009 · KBS2TV</span></div></div>
+        <div class="card text-card"><div class="cmedia"><b class="t-ko">다큐 3일</b><b class="t-en">Documentary 3 Days</b><span>2010 – 2016 · KBS2TV</span></div></div>
+        <div class="card text-card"><div class="cmedia"><b class="t-ko">6시 내고향</b><b class="t-en">6 O'Clock My Hometown</b><span>2003 – 2012 · KBS1TV</span></div></div>
+        <div class="card">
+          <div class="cmedia"><span class="tag">7,000+ EP</span>
+            <div style="width:100%;height:100%;background:linear-gradient(155deg,#1c1512,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
+              <b style="font-size:18px;font-weight:800;line-height:1.5;">KBS World TV<br><span style="font-size:12px;color:var(--gold-2);letter-spacing:.06em;font-weight:600;">ENGLISH BROADCAST</span></b>
+            </div>
+          </div>
+          <div class="cbody">
+            <div class="yr">2005 – 2016</div>
+            <h4><span class="t-ko">KBS World TV 영어방송 재제작</span><span class="t-en">KBS World English Re-production</span></h4>
+            <p class="t-ko">7,000편 영어 자막 방송 재제작(English Text Caption)</p><p class="t-en">7,000+ episodes re-produced with English text captions</p>
+            <div class="chips"><span class="chip">2 Days &amp; 1 Night</span><span class="chip">Immortal Songs</span><span class="chip">Boys Over Flowers</span><span class="chip">Return of Superman</span><span class="chip">The Great Merchant</span></div>
+          </div>
+        </div>
+      </div>
+
+      <details class="archive">
+        <summary><span><span class="t-ko">전체 TV 제작 프로젝트 보기 (9건)</span><span class="t-en">View All TV Production Projects (9)</span></span><span class="plus"></span></summary>
+        <div class="archive-list">
+          <div class="arc-row"><span class="arc-yr">2000–05</span><span class="arc-name t-ko">도전! 지구탐험대</span><span class="arc-name t-en">Challenge! Earth Expedition</span><span class="arc-venue">KBS2TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2005–12</span><span class="arc-name t-ko">체험 삶의 현장</span><span class="arc-name t-en">Experience the Field of Life</span><span class="arc-venue">KBS2TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2001–09</span><span class="arc-name t-ko">세상의 아침</span><span class="arc-name t-en">Morning of the World</span><span class="arc-venue">KBS2TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2005–12</span><span class="arc-name t-ko">TV 문화지대, 한국의 미</span><span class="arc-name t-en">TV Culture Zone, Beauty of Korea</span><span class="arc-venue">KBS1TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2010–16</span><span class="arc-name t-ko">다큐 3일</span><span class="arc-name t-en">Documentary 3 Days</span><span class="arc-venue">KBS2TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2003–12</span><span class="arc-name t-ko">6시 내고향</span><span class="arc-name t-en">6 O'Clock My Hometown</span><span class="arc-venue">KBS1TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2000–10</span><span class="arc-name t-ko">클릭! 날씨와 생활</span><span class="arc-name t-en">Click! Weather and Life</span><span class="arc-venue">KBS2TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2000–09</span><span class="arc-name t-ko">KBS 뉴스투데이 / 뉴스타임</span><span class="arc-name t-en">KBS News Today / News Time</span><span class="arc-venue">KBS2TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2005–16</span><span class="arc-name t-ko">KBS World TV 영어방송 재제작 (7,000편)</span><span class="arc-name t-en">KBS World English Re-production (7,000 ep.)</span><span class="arc-venue">KBS World</span></div>
+        </div>
+      </details>
+    </div>
+
+    <!-- PROMOTION -->
+    <div class="tabpanel" id="panel-promo">
+      <p class="panel-intro t-ko">공공기관과 기업의 홍보영상 제작부터 지역축제, 컨벤션, 스포츠 이벤트 연출까지 — 콘텐츠가 필요한 모든 현장에 두미르가 있습니다.</p>
+      <p class="panel-intro t-en">From promotional films for public institutions and enterprises to regional festivals, conventions and sports events — DUMIR is present wherever content is needed.</p>
+      <div class="cards">
+        <div class="card text-card"><div class="cmedia"><b class="t-ko">국립극장 홍보영화</b><b class="t-en">National Theater of Korea</b><span>2021</span></div></div>
+        <div class="card text-card"><div class="cmedia"><b class="t-ko">국립아시아문화전당 홍보영화</b><b class="t-en">Asia Culture Center</b><span>2016</span></div></div>
+        <div class="card text-card"><div class="cmedia"><b class="t-ko">전남도립미술관 홍보영화</b><b class="t-en">Jeonnam Museum of Art</b><span>2021</span></div></div>
+        <div class="card text-card"><div class="cmedia"><b class="t-ko">공공 인프라 홍보영화</b><b class="t-en">Public Infrastructure Films</b><span class="t-ko">한국도로공사 · 인천대교 · 한국가스공사</span><span class="t-en">Korea Expressway · Incheon Bridge · Korea Gas Safety</span></div></div>
+        <div class="card text-card"><div class="cmedia"><b class="t-ko">지역축제 연출</b><b class="t-en">Regional Festivals</b><span class="t-ko">강릉단오제 · 김제 지평선축제 · 수원화성 행궁축제</span><span class="t-en">Gangneung Danoje · Gimje Horizon · Suwon Hwaseong</span></div></div>
+        <div class="card text-card"><div class="cmedia"><b class="t-ko">컨벤션 · 스포츠 이벤트</b><b class="t-en">Convention &amp; Sports Events</b><span class="t-ko">대학입학정보박람회 · 전국산악자전거대회 · 보신각 타종행사</span><span class="t-en">College Fair · MTB Championship · Bosingak Bell-Ringing</span></div></div>
+      </div>
+
+      <details class="archive">
+        <summary><span><span class="t-ko">전체 프로모션 프로젝트 보기 (18건)</span><span class="t-en">View All Promotion Projects (18)</span></span><span class="plus"></span></summary>
+        <div class="archive-list">
+          <div class="arc-row"><span class="arc-yr">2021</span><span class="arc-name t-ko">국립극장 홍보영화</span><span class="arc-name t-en">National Theater of Korea Film</span><span class="arc-venue t-ko">홍보영상 제작</span><span class="arc-venue t-en">Advertising Video</span></div>
+          <div class="arc-row"><span class="arc-yr">2016</span><span class="arc-name t-ko">국립아시아문화전당 홍보영화</span><span class="arc-name t-en">Asia Culture Center Promo Film</span><span class="arc-venue t-ko">홍보영상 제작</span><span class="arc-venue t-en">Promotional Video</span></div>
+          <div class="arc-row"><span class="arc-yr">2021</span><span class="arc-name t-ko">전남도립미술관 홍보영화</span><span class="arc-name t-en">Jeonnam Museum of Art Promo Film</span><span class="arc-venue t-ko">홍보영상 제작</span><span class="arc-venue t-en">Promotional Video</span></div>
+          <div class="arc-row"><span class="arc-yr">2016</span><span class="arc-name t-ko">국립아시아문화전당 라이브러리파크 전시영상</span><span class="arc-name t-en">ACC Library Park Exhibition Video</span><span class="arc-venue t-ko">전시영상 제작</span><span class="arc-venue t-en">Exhibition Video</span></div>
+          <div class="arc-row"><span class="arc-yr">2023</span><span class="arc-name t-ko">조르주루오 특별전 전시관영화</span><span class="arc-name t-en">Georges Rouault Exhibition Hall Film</span><span class="arc-venue t-ko">전시관 영상</span><span class="arc-venue t-en">Exhibition Hall Video</span></div>
+          <div class="arc-row"><span class="arc-yr">2022–23</span><span class="arc-name t-ko">조르주루오 특별전 홍보영화</span><span class="arc-name t-en">Georges Rouault Promo Film</span><span class="arc-venue t-ko">홍보영상 제작</span><span class="arc-venue t-en">Exhibition Video</span></div>
+          <div class="arc-row"><span class="arc-yr">2016</span><span class="arc-name t-ko">한국도로공사 홍보영화</span><span class="arc-name t-en">Korea Expressway Corp. Promo Film</span><span class="arc-venue t-ko">홍보영상 제작</span><span class="arc-venue t-en">Promotional Video</span></div>
+          <div class="arc-row"><span class="arc-yr">2018</span><span class="arc-name t-ko">인천대교 홍보영화</span><span class="arc-name t-en">Incheon Bridge Promo Film</span><span class="arc-venue t-ko">홍보영상 제작</span><span class="arc-venue t-en">Promotional Video</span></div>
+          <div class="arc-row"><span class="arc-yr">2015</span><span class="arc-name t-ko">한국가스공사 홍보영화</span><span class="arc-name t-en">Korea Gas Corp. Promo Film</span><span class="arc-venue t-ko">홍보영상 제작</span><span class="arc-venue t-en">Promotional Video</span></div>
+          <div class="arc-row"><span class="arc-yr">2020</span><span class="arc-name t-ko">충청남도 홍보영화</span><span class="arc-name t-en">Chungcheongnam-do Promo Film</span><span class="arc-venue t-ko">홍보영상 제작</span><span class="arc-venue t-en">Promotional Video</span></div>
+          <div class="arc-row"><span class="arc-yr">2018–19</span><span class="arc-name t-ko">예산군 홍보영화(지명 1100년 역사)</span><span class="arc-name t-en">Yesan-gun 1,100-Year History Film</span><span class="arc-venue t-ko">홍보영상 제작</span><span class="arc-venue t-en">Advertising Video</span></div>
+          <div class="arc-row"><span class="arc-yr">2005–12</span><span class="arc-name t-ko">KBS 홍보영화</span><span class="arc-name t-en">KBS Promotional Film</span><span class="arc-venue t-ko">홍보영상 제작</span><span class="arc-venue t-en">Promotional Video</span></div>
+          <div class="arc-row"><span class="arc-yr">2005·11</span><span class="arc-name t-ko">강릉단오제</span><span class="arc-name t-en">Gangneung Danoje Festival</span><span class="arc-venue t-ko">지역축제 연출</span><span class="arc-venue t-en">Local Festival Production</span></div>
+          <div class="arc-row"><span class="arc-yr">2006–07</span><span class="arc-name t-ko">김제 지평선축제</span><span class="arc-name t-en">Gimje Horizon Festival</span><span class="arc-venue t-ko">지역축제 연출</span><span class="arc-venue t-en">Local Festival Production</span></div>
+          <div class="arc-row"><span class="arc-yr">2007–08</span><span class="arc-name t-ko">수원화성 행궁축제</span><span class="arc-name t-en">Suwon Hwaseong Palace Festival</span><span class="arc-venue t-ko">역사문화축제 연출</span><span class="arc-venue t-en">History &amp; Culture Festival</span></div>
+          <div class="arc-row"><span class="arc-yr">2010–14</span><span class="arc-name t-ko">대학입학정보박람회</span><span class="arc-name t-en">College Admission Info Fair</span><span class="arc-venue t-ko">코엑스 · KBS2TV</span><span class="arc-venue t-en">COEX · KBS2TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2006–08</span><span class="arc-name t-ko">전국산악자전거대회</span><span class="arc-name t-en">National MTB Championship</span><span class="arc-venue t-ko">무주리조트 · KBS2TV</span><span class="arc-venue t-en">Muju Resort · KBS2TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2008–10</span><span class="arc-name t-ko">보신각 제야의 타종행사</span><span class="arc-name t-en">Bosingak New Year Bell-Ringing</span><span class="arc-venue t-ko">KBS2TV 중계</span><span class="arc-venue t-en">KBS2TV Broadcast</span></div>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PARTNERS ================= -->
+<section class="section section-alt" id="partners">
+  <div class="wrap">
+    <div class="eyebrow"><span class="t-ko">파트너</span><span class="t-en">Partners</span></div>
+    <h2 class="title" style="margin-bottom:14px;"><span class="t-ko">신뢰로 함께해온 기관들</span><span class="t-en">Institutions We've Worked With</span></h2>
+    <p class="lede" style="margin-bottom:44px;"><span class="t-ko">정부기관, 방송사, 언론사, 미술관·공연장, 국내 대기업까지 — 두미르는 오랜 시간 신뢰를 쌓아온 파트너들과 함께합니다.</span><span class="t-en">From government bodies and broadcasters to press, museums, concert halls and leading enterprises — DUMIR has built lasting trust with its partners.</span></p>
+    <div class="partners-band reveal">
+      <img src="assets/img/partners-band.png" alt="DUMIR Partners">
+    </div>
+    <p class="partner-note"><span class="t-ko">문화체육관광부 · 외교부 · 산업통상자원부 · 서울특별시 · 경기도 · 충청남도 · 전라남도 등 정부·지자체 기관을 비롯해 KBS 계열사, 조선일보·중앙일보·한국일보·MBN·YTN 등 언론사와 함께합니다.</span><span class="t-en">Including the Ministry of Culture, Sports and Tourism, Ministry of Foreign Affairs, Ministry of Trade, Industry and Energy, Seoul Metropolitan Government, and regional governments, alongside the KBS media group and major press including Chosun Ilbo, JoongAng Ilbo, Hankook Ilbo, MBN and YTN.</span></p>
+  </div>
+</section>
+
+<div class="divider-banner">
+  <img src="assets/img/stage-lights.jpg" alt="DUMIR stage production">
+</div>
+
+<!-- ================= CONTACT ================= -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="eyebrow"><span class="t-ko">오시는 길</span><span class="t-en">Contact</span></div>
+    <h2 class="title" style="margin-bottom:50px;"><span class="t-ko">두미르와 함께할 다음 프로젝트</span><span class="t-en">Your Next Project, With DUMIR</span></h2>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0119 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg></div>
+          <div><b class="t-ko">주소</b><b class="t-en">Address</b><div><span class="t-ko">(07545) 서울특별시 강서구 양천로 615, 3층</span><span class="t-en">3F, 615 Yangcheon-ro, Gangseo-gu, Seoul, Korea</span></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h4l2 5-2.5 1.5a11 11 0 005 5L14 14l5 2v4a2 2 0 01-2 2C9.6 22 2 14.4 2 7a2 2 0 012-2z"/></svg></div>
+          <div><b class="t-ko">전화 / 팩스</b><b class="t-en">Tel / Fax</b><div><a href="tel:0227827015">02-782-7015</a> &nbsp;/&nbsp; 02-782-7016 (F)</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+          <div><b>Email</b><div><a href="mailto:dumir2000@hanmail.net">dumir2000@hanmail.net</a><br><a href="mailto:sa-i-da@hanmail.net">sa-i-da@hanmail.net</a></div></div>
+        </div>
+      </div>
+      <div class="map-card reveal">
+        <div>
+          <h4><span class="t-ko">방문 상담 안내</span><span class="t-en">Visit Us</span></h4>
+          <p class="t-ko">사업 제휴, 공연·전시 기획, 방송·홍보 영상 제작 문의는 이메일 또는 전화로 편하게 연락 주세요. 카카오맵/네이버지도에서 "두미르"로 검색하시면 위치를 바로 확인하실 수 있습니다.</p>
+          <p class="t-en">For partnership, performance/exhibition planning, or broadcast &amp; promotional video inquiries, please reach us by phone or email. Search "DUMIR" (두미르) on Kakao Map or Naver Map to find our location.</p>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="btn solid" href="mailto:dumir2000@hanmail.net"><span class="t-ko">이메일 문의</span><span class="t-en">Email Us</span></a>
+          <a class="btn" target="_blank" rel="noopener" href="https://map.kakao.com/link/search/서울특별시 강서구 양천로 615">
+            <span class="t-ko">카카오맵 보기</span><span class="t-en">Open Kakao Map</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><span class="mark">DU</span>MIR</div>
+        <p class="t-ko">문화콘텐츠 &amp; TV 제작 전문 그룹</p>
+        <p class="t-en">A Specialist Group in Cultural Contents &amp; TV Production</p>
+      </div>
+      <div class="foot-col">
+        <b class="t-ko">회사정보</b><b class="t-en">Company</b>
+        <p class="t-ko">주식회사 두미르 · 대표이사 고필규</p>
+        <p class="t-en">DUMIR Co., Ltd. · CEO Go Pil-gyu</p>
+        <p>107-81-81661</p>
+        <p class="t-ko">(07545) 서울특별시 강서구 양천로 615, 3층</p>
+        <p class="t-en">3F, 615 Yangcheon-ro, Gangseo-gu, Seoul</p>
+      </div>
+      <div class="foot-col">
+        <b class="t-ko">연락처</b><b class="t-en">Contact</b>
+        <p>Tel. 02-782-7015</p>
+        <p>Fax. 02-782-7016</p>
+        <p>dumir2000@hanmail.net</p>
+      </div>
+      <div class="foot-col">
+        <b class="t-ko">바로가기</b><b class="t-en">Quick Links</b>
+        <p><a href="#about" class="t-ko">회사소개</a><a href="#about" class="t-en">About</a></p>
+        <p><a href="#portfolio" class="t-ko">포트폴리오</a><a href="#portfolio" class="t-en">Portfolio</a></p>
+        <p><a href="#contact" class="t-ko">오시는 길</a><a href="#contact" class="t-en">Contact</a></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2000&ndash;2026 DUMIR Co., Ltd. All rights reserved.</span>
+      <span>dumir.co.kr</span>
+    </div>
+  </div>
+</footer>
+
+<div class="totop" id="totop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>
+
+<script>
+// header scroll state
+const header = document.getElementById('siteHeader');
+const totop = document.getElementById('totop');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  header.classList.toggle('scrolled', y > 40);
+  totop.classList.toggle('show', y > 700);
+}, {passive:true});
+
+// mobile nav
+const burger = document.getElementById('burger');
+const nav = document.getElementById('mainNav');
+burger.addEventListener('click', () => nav.classList.toggle('open'));
+document.querySelectorAll('.mainnav a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+// language switch
+const html = document.documentElement;
+const btnKo = document.getElementById('btnKo');
+const btnEn = document.getElementById('btnEn');
+function setLang(lang){
+  html.classList.remove('lang-ko','lang-en');
+  html.classList.add('lang-'+lang);
+  html.setAttribute('lang', lang);
+  btnKo.classList.toggle('active', lang==='ko');
+  btnEn.classList.toggle('active', lang==='en');
+  document.title = lang==='ko'
+    ? "DUMIR 두미르 | A Specialist Group in Cultural Contents & TV Production"
+    : "DUMIR | A Specialist Group in Cultural Contents & TV Production";
+  localStorage.setItem('dumir-lang', lang);
+}
+btnKo.addEventListener('click', () => setLang('ko'));
+btnEn.addEventListener('click', () => setLang('en'));
+const saved = localStorage.getItem('dumir-lang');
+if(saved) setLang(saved);
+
+// tabs
+document.querySelectorAll('.tabbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tabbtn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tabpanel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+// reveal on scroll
+const revealEls = document.querySelectorAll('.reveal, .pillar, .card, .contact-item');
+revealEls.forEach(el => el.classList.add('reveal'));
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:.12, rootMargin:'0px 0px -60px 0px'});
+revealEls.forEach(el => io.observe(el));
+
+// back to top
+totop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+</script>
+</body>
+</html>
