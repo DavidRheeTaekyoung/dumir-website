@@ -6,6 +6,10 @@
 <title>DUMIR 두미르 | A Specialist Group in Cultural Contents &amp; TV Production</title>
 <meta name="description" content="주식회사 두미르 — 2000년부터 방송, 공연, 전시, 프로모션 전 영역의 문화콘텐츠를 기획·제작해온 콘텐츠 전문기업.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0908'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%23cda15b' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
 <style>
 :root{
   --ink:#0a0908; --ink2:#131110; --ink3:#1b1815;
@@ -22,10 +26,16 @@
 html{scroll-behavior:smooth;}
 body{
   background:var(--ink); color:var(--paper);
-  font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-family:'Pretendard Variable','Pretendard','Apple SD Gothic Neo',-apple-system,BlinkMacSystemFont,'Segoe UI','Malgun Gothic',sans-serif;
   font-weight:400; line-height:1.6; overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
+.serif, .hero h1, h2.title, .divider-banner .quote p, .card .cbody h4, .map-card h4, .card.text-card .cmedia b{
+  font-family:'Noto Serif KR','Pretendard Variable',serif;
+}
+.hero h1{font-weight:900;}
+h2.title{font-weight:700;}
+.stat b, .hero-stats .stat b{font-family:'Cormorant Garamond','Noto Serif KR',serif;}
 img{max-width:100%; display:block;}
 a{color:inherit; text-decoration:none;}
 ul{list-style:none;}
@@ -244,10 +254,25 @@ details.archive[open] summary .plus::after{opacity:0;}
 .divider-banner .quote p{font-size:clamp(17px,2.4vw,26px); font-weight:600; max-width:820px; line-height:1.6; color:var(--paper);}
 .divider-banner .quote span{color:var(--gold-2);}
 
-/* partners */
-.partners-band{border:1px solid var(--line); border-radius:16px; overflow:hidden; padding:30px 26px; background:var(--ink2);}
-.partners-band img{opacity:.86; filter:grayscale(.15);}
-.partner-note{margin-top:24px; font-size:13px; color:var(--muted); text-align:center; max-width:640px; margin-left:auto; margin-right:auto; line-height:1.8;}
+/* partners — flowing logo marquee */
+.logo-marquee-wrap{
+  overflow:hidden; position:relative; margin-top:14px; padding:8px 0;
+  -webkit-mask-image:linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image:linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.logo-marquee{display:flex; align-items:center; gap:14px; width:max-content; animation:scroll 60s linear infinite;}
+.logo-marquee-wrap.rev .logo-marquee{animation-duration:72s; animation-direction:reverse;}
+.logo-marquee-wrap:hover .logo-marquee{animation-play-state:paused;}
+.logo-cell{
+  background:#fdfcfa; border-radius:12px; height:74px; padding:0 30px;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  transition:transform .3s var(--ease);
+}
+.logo-cell:hover{transform:translateY(-3px);}
+.logo-cell img{height:32px; width:auto; max-width:180px; object-fit:contain;}
+.partner-note{margin-top:34px; font-size:13px; color:var(--muted); text-align:center; max-width:640px; margin-left:auto; margin-right:auto; line-height:1.8;}
+/* photo cards (landscape stills) */
+.card.photo .cmedia{aspect-ratio:16/10;}
 
 /* contact */
 .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
@@ -303,12 +328,12 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
   <div class="hero-media"><img src="assets/img/hero-stadium.jpg" alt="DUMIR live concert production"></div>
   <div class="hero-inner">
     <h1>
-      <span class="t-ko">문화의 순간을,<br><em>두미르</em>가 만듭니다.</span>
-      <span class="t-en">DUMIR creates<br><em>cultural</em> moments.</span>
+      <span class="t-ko">문화의 순간을<br><em>두미르</em>가 만듭니다</span>
+      <span class="t-en">DUMIR creates<br><em>cultural</em> moments</span>
     </h1>
     <p class="sub">
-      <span class="t-ko">2000년부터 방송·공연·전시·프로모션 전 영역에서 대한민국을 대표하는 문화콘텐츠를 기획하고 제작해온 콘텐츠 전문기업, 두미르입니다.</span>
-      <span class="t-en">Since 2000, DUMIR has been planning and producing world-class cultural content across broadcasting, live performance, exhibitions and promotion.</span>
+      <span class="t-ko">2000년부터 방송·공연·전시·프로모션 전 영역에서<br>대한민국을 대표하는 문화콘텐츠를 기획하고 제작해온<br>콘텐츠 전문기업 두미르입니다</span>
+      <span class="t-en">Since 2000 DUMIR has been planning and producing world-class cultural content across broadcasting · live performance · exhibitions and promotion</span>
     </p>
     <div class="hero-cta">
       <a href="#business" class="btn solid">
@@ -323,7 +348,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
       <div class="stat"><b>26+</b><span class="t-ko">년의 경험</span><span class="t-en">Years of Experience</span></div>
       <div class="stat"><b>3.2M+</b><span class="t-ko">누적 전시 관람객</span><span class="t-en">Exhibition Visitors</span></div>
       <div class="stat"><b>7,000+</b><span class="t-ko">KBS World 방송 편수</span><span class="t-en">KBS World Episodes</span></div>
-      <div class="stat"><b>20+</b><span class="t-ko">대형 콘서트·페스티벌</span><span class="t-en">Major Concerts &amp; Festivals</span></div>
+      <div class="stat"><b>50+</b><span class="t-ko">국제이벤트·퍼포먼스</span><span class="t-en">International Events &amp; Performances</span></div>
     </div>
   </div>
   <div class="scrolldown"><span class="t-ko">SCROLL</span><span class="t-en">SCROLL</span><div class="line"></div></div>
@@ -336,24 +361,23 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
     <div class="about-grid">
       <div class="about-copy reveal">
         <h2 class="title" style="margin-bottom:28px;">
-          <span class="t-ko">방송에서 전시까지,<br>하나의 팀이 만드는<br>문화콘텐츠</span>
+          <span class="t-ko">방송에서 전시까지<br>하나의 팀이 만드는<br>문화콘텐츠</span>
           <span class="t-en">From broadcast to exhibition —<br>cultural content built<br>by one team</span>
         </h2>
-        <p class="t-ko">(주)두미르는 2000년 설립하여 방송, 영상, 공연, 문화예술 콘텐츠를 기획·주관·제작하는 콘텐츠 전문 기업입니다. 2000년 공중파 방송 프로그램 제작을 시작으로 기업홍보, 축제이벤트, 국내 작품 해외 공연, 유럽 클래식 내한공연, 유럽 미술관 블록버스터 국내 특별전 등 대형 국제 이벤트와 다양한 글로벌 문화예술 콘텐츠 보급 사업을 전개하고 있습니다.</p>
-        <p class="t-ko">우수한 콘텐츠 제작 능력과 기획력을 바탕으로 다양한 프로젝트를 성공적으로 수행해왔으며, 국내외 문화예술기관 및 언론사들과 깊은 신뢰 속에 다양한 글로벌 문화콘텐츠 기획사업을 주관하고 있습니다. 국제 문화예술콘텐츠 사업의 경험을 바탕으로 세계 각국의 문화 선진국들과 긴밀한 교류 관계를 형성하며, 대중 및 순수예술 진흥과 문화 평등에 기여하기 위해 최선을 다하고 있습니다.</p>
-        <p class="t-en">Founded in 2000, DUMIR Co., Ltd. is a specialist content company that plans, organizes and produces broadcasting, video, performance and cultural-arts content. Beginning with terrestrial TV program production in 2000, we have expanded into corporate promotional films, festival events, overseas performances of Korean works, European classical concerts, and blockbuster international art exhibitions from Europe's leading museums.</p>
-        <p class="t-en">Backed by outstanding production capability and planning expertise, we have successfully delivered a wide range of projects and continue to organize global cultural content programs in deep partnership with cultural institutions and press at home and abroad. Drawing on our international experience, we maintain close exchange relationships with culturally advanced nations, working to promote the arts and cultural equality both in Korea and beyond.</p>
+        <p class="t-ko">(주)두미르는 2000년 설립하여 방송 · 영상 · 공연 · 문화예술 콘텐츠를 기획·주관·제작하는 콘텐츠 전문 기업입니다 &nbsp;2000년 공중파 방송 프로그램 제작을 시작으로 기업홍보 · 축제이벤트 · 국내 작품 해외 공연 · 유럽 클래식 내한공연 · 유럽 미술관 블록버스터 국내 특별전 등 대형 국제 이벤트와 다양한 글로벌 문화예술 콘텐츠 보급 사업을 전개하고 있습니다</p>
+        <p class="t-ko">우수한 콘텐츠 제작 능력과 기획력을 바탕으로 다양한 프로젝트를 성공적으로 수행해왔으며 국내외 문화예술기관 및 언론사들과 깊은 신뢰 속에 다양한 글로벌 문화콘텐츠 기획사업을 주관하고 있습니다 &nbsp;국제 문화예술콘텐츠 사업의 경험을 바탕으로 세계 각국의 문화 선진국들과 긴밀한 교류 관계를 형성하며 대중 및 순수예술 진흥과 문화 평등에 기여하기 위해 최선을 다하고 있습니다</p>
+        <p class="t-en">Founded in 2000 DUMIR Co Ltd is a specialist content company that plans · organizes and produces broadcasting · video · performance and cultural-arts content &nbsp;Beginning with terrestrial TV program production in 2000 we have expanded into corporate promotional films · festival events · overseas performances of Korean works · European classical concerts and blockbuster international art exhibitions from Europe's leading museums</p>
+        <p class="t-en">Backed by outstanding production capability and planning expertise we have successfully delivered a wide range of projects and continue to organize global cultural content programs in deep partnership with cultural institutions and press at home and abroad &nbsp;Drawing on our international experience we maintain close exchange relationships with culturally advanced nations working to promote the arts and cultural equality both in Korea and beyond</p>
       </div>
       <div class="reveal">
         <div class="factsheet">
           <div class="row"><b class="t-ko">기업명칭</b><b class="t-en">Company</b><div><span class="t-ko">주식회사 두미르</span><span class="t-en">DUMIR Co., Ltd.</span></div></div>
-          <div class="row"><b class="t-ko">설립일</b><b class="t-en">Founded</b><div><span class="t-ko">2000년 4월</span><span class="t-en">April, 2000</span></div></div>
-          <div class="row"><b class="t-ko">대표이사</b><b class="t-en">CEO</b><div>고필규 <span class="t-ko">(Go Pil-gyu)</span><span class="t-en">Go Pil-gyu</span></div></div>
+          <div class="row"><b class="t-ko">설립일</b><b class="t-en">Founded</b><div><span class="t-ko">2000년 4월</span><span class="t-en">April 2000</span></div></div>
+          <div class="row"><b class="t-ko">대표이사</b><b class="t-en">CEO</b><div><span class="t-ko">고필규 (KO PILL KYU)</span><span class="t-en">KO PILL KYU</span></div></div>
           <div class="row"><b class="t-ko">사업자등록번호</b><b class="t-en">Reg. No.</b><div>107-81-81661</div></div>
           <div class="row"><b class="t-ko">사업영역</b><b class="t-en">Business</b><div><span class="t-ko">공연기획·제작 / 국제전시기획·제작 / 이벤트 제작 / 콘텐츠 영상 제작(TV프로그램·광고영상·기업홍보)</span><span class="t-en">Performance &amp; Exhibition Planning/Production, Event Production, Content &amp; Video Production (TV Programs, Advertising, Corporate Promotion)</span></div></div>
           <div class="row"><b class="t-ko">주소</b><b class="t-en">Address</b><div><span class="t-ko">(07545) 서울특별시 강서구 양천로 615, 3층</span><span class="t-en">3F, 615 Yangcheon-ro, Gangseo-gu, Seoul, Korea (07545)</span></div></div>
-          <div class="row"><b class="t-ko">연락처</b><b class="t-en">Contact</b><div>Tel. 02-782-7015 &nbsp;/&nbsp; Fax. 02-782-7016</div></div>
-          <div class="row"><b>Email</b><div><a href="mailto:dumir2000@hanmail.net">dumir2000@hanmail.net</a></div></div>
+          <div class="row"><b class="t-ko">연락처</b><b class="t-en">Contact</b><div>Tel 02-782-7015 &nbsp;/&nbsp; Fax 02-782-7016</div></div>
         </div>
       </div>
     </div>
@@ -368,7 +392,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
         <div class="eyebrow"><span class="t-ko">사업영역</span><span class="t-en">Contents Business</span></div>
         <h2 class="title"><span class="t-ko">네 개의 축, 하나의 콘텐츠</span><span class="t-en">Four Pillars, One Content Vision</span></h2>
       </div>
-      <p class="lede"><span class="t-ko">TV 제작을 시작으로 프로모션, 전시, 공연예술까지 — 두미르는 서로 다른 4개 영역을 유기적으로 연결해 완성도 높은 문화콘텐츠를 만듭니다.</span><span class="t-en">Starting with TV production and expanding into promotion, exhibition and performing arts — DUMIR connects four distinct domains into one seamless cultural content practice.</span></p>
+      <p class="lede"><span class="t-ko">TV 제작을 시작으로 프로모션 · 전시 · 공연예술까지 — 두미르는 서로 다른 4개 영역을 유기적으로 연결해 완성도 높은 문화콘텐츠를 만듭니다</span><span class="t-en">Starting with TV production and expanding into promotion · exhibition and performing arts — DUMIR connects four distinct domains into one seamless cultural content practice</span></p>
     </div>
 
     <div class="pillars reveal">
@@ -376,29 +400,29 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
         <div class="num">01</div>
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 18v3"/></svg></div>
         <h3><span class="t-ko">TV 제작</span><span class="t-en">TV Production</span><span class="en-sub">Since 2000</span></h3>
-        <p class="t-ko">지상파 정규 프로그램 제작과 KBS World 해외 송출 콘텐츠 제작까지, 방송 콘텐츠의 시작점입니다.</p>
-        <p class="t-en">From terrestrial TV programs to KBS World's international broadcast content — the origin of our content practice.</p>
+        <p class="t-ko">지상파 정규 프로그램 제작과 KBS World 해외 송출 콘텐츠 제작까지 방송 콘텐츠의 시작점입니다</p>
+        <p class="t-en">From terrestrial TV programs to KBS World's international broadcast content — the origin of our content practice</p>
       </div>
       <div class="pillar">
         <div class="num">02</div>
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11l18-7-7 18-2-8-8-2z"/></svg></div>
         <h3><span class="t-ko">프로모션</span><span class="t-en">Promotion &amp; Other</span><span class="en-sub">Since 2002</span></h3>
-        <p class="t-ko">공공기관·기업 홍보영상, 지역축제, 컨벤션 이벤트를 기획하고 제작합니다.</p>
-        <p class="t-en">Promotional films for public institutions and enterprises, regional festivals, and convention events.</p>
+        <p class="t-ko">공공기관·기업 홍보영상 · 지역축제 · 컨벤션 이벤트를 기획하고 제작합니다</p>
+        <p class="t-en">Promotional films for public institutions and enterprises · regional festivals · convention events</p>
       </div>
       <div class="pillar">
         <div class="num">03</div>
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="1.5"/><circle cx="9.5" cy="10" r="1.7"/><path d="M4 16l5-4 4 3 3-2.5 4 3.5"/></svg></div>
         <h3><span class="t-ko">전시</span><span class="t-en">Exhibition</span><span class="en-sub">Since 2004</span></h3>
-        <p class="t-ko">샤갈·피카소·모네·투탕카멘 등 세계적 거장의 작품을 국내에 소개하는 블록버스터 특별전을 주관합니다.</p>
-        <p class="t-en">Blockbuster special exhibitions bringing world masters — Chagall, Picasso, Monet, Tutankhamun — to Korea.</p>
+        <p class="t-ko">샤갈·피카소·모네·투탕카멘 등 세계적 거장의 작품을 국내에 소개하는 블록버스터 특별전을 주관합니다</p>
+        <p class="t-en">Blockbuster special exhibitions bringing world masters — Chagall · Picasso · Monet · Tutankhamun — to Korea</p>
       </div>
       <div class="pillar">
         <div class="num">04</div>
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg></div>
         <h3><span class="t-ko">공연예술</span><span class="t-en">Performing Arts</span><span class="en-sub">Since 2006</span></h3>
-        <p class="t-ko">K-POP 페스티벌부터 유럽 클래식 내한공연, 시상식까지 라이브 공연을 기획·제작합니다.</p>
-        <p class="t-en">From K-POP festivals to European classical tours and televised awards shows — live performance production.</p>
+        <p class="t-ko">K-POP 페스티벌부터 유럽 클래식 내한공연 · 시상식까지 라이브 공연을 기획·제작합니다</p>
+        <p class="t-en">From K-POP festivals to European classical tours and televised awards shows — live performance production</p>
       </div>
     </div>
 
@@ -407,7 +431,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
       <div class="tl-item"><b>2002</b><span class="t-ko">프로모션 사업 개시</span><span class="t-en">Promotion Business Begins</span></div>
       <div class="tl-item"><b>2004</b><span class="t-ko">국제전시 사업 개시</span><span class="t-en">Exhibition Business Begins</span></div>
       <div class="tl-item"><b>2006</b><span class="t-ko">공연예술 사업 개시</span><span class="t-en">Performing Arts Begins</span></div>
-      <div class="tl-item"><b>2026</b><span class="t-ko">현재, 진행형</span><span class="t-en">Today &amp; Beyond</span></div>
+      <div class="tl-item"><b>2026</b><span class="t-ko">현재 진행형</span><span class="t-en">Today &amp; Beyond</span></div>
     </div>
   </div>
 </section>
@@ -440,8 +464,8 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
 <div class="divider-banner">
   <img src="assets/img/hero-crowd.jpg" alt="DUMIR audience">
   <div class="quote">
-    <p><span class="t-ko">25년간 두미르는 <span>3,280,000명</span>의 관객과<br>함께 순간을 만들어왔습니다.</span>
-    <span class="t-en">For over two decades, DUMIR has created moments<br>shared with <span>3,280,000</span> audience members.</span></p>
+    <p><span class="t-ko">25년간 두미르는 <span>3,280,000명</span>의 관객과<br>함께 순간을 만들어왔습니다</span>
+    <span class="t-en">For over two decades DUMIR has created moments<br>shared with <span>3,280,000</span> audience members</span></p>
   </div>
 </div>
 
@@ -453,7 +477,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
         <div class="eyebrow"><span class="t-ko">포트폴리오</span><span class="t-en">Portfolio</span></div>
         <h2 class="title"><span class="t-ko">두미르가 만들어온 순간들</span><span class="t-en">Moments DUMIR Has Built</span></h2>
       </div>
-      <p class="lede"><span class="t-ko">공연, 전시, 방송, 프로모션 — 각 영역별 대표 프로젝트를 소개합니다. 전체 프로젝트는 각 항목의 '전체보기'에서 확인하실 수 있습니다.</span><span class="t-en">Explore representative projects across performing arts, exhibition, TV production and promotion. Click "View all" under each category for the complete archive.</span></p>
+      <p class="lede"><span class="t-ko">공연 · 전시 · 방송 · 프로모션 — 각 영역별 대표 프로젝트를 소개합니다 &nbsp;전체 프로젝트는 각 항목의 '전체보기'에서 확인하실 수 있습니다</span><span class="t-en">Explore representative projects across performing arts · exhibition · TV production and promotion &nbsp;Click "View all" under each category for the complete archive</span></p>
       </div>
 
     <div class="tabbar">
@@ -465,66 +489,53 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
 
     <!-- PERFORMING ARTS -->
     <div class="tabpanel active" id="panel-perf">
-      <p class="panel-intro t-ko">국내 최대 규모 K-POP 페스티벌부터 세계 정상급 오케스트라의 내한공연, 지상파 시상식까지 — 두미르는 20년 넘게 라이브 무대의 최전선에 있었습니다.</p>
-      <p class="panel-intro t-en">From Korea's largest K-POP festivals to world-class orchestra tours and national broadcast awards shows — DUMIR has stood at the frontline of live performance for over two decades.</p>
+      <p class="panel-intro t-ko">국내 최대 규모 K-POP 페스티벌부터 세계 정상급 오케스트라의 내한공연 · 지상파 시상식까지 — 두미르는 20년 넘게 라이브 무대의 최전선에 있었습니다</p>
+      <p class="panel-intro t-en">From Korea's largest K-POP festivals to world-class orchestra tours and national broadcast awards shows — DUMIR has stood at the frontline of live performance for over two decades</p>
       <div class="cards">
-        <div class="card">
+        <div class="card photo">
           <div class="cmedia"><span class="tag t-ko">K-POP·페스티벌</span><span class="tag t-en">K-POP · Festival</span>
-            <div style="width:100%;height:100%;background:linear-gradient(155deg,#241a12,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
-              <b style="font-size:19px;font-weight:800;line-height:1.4;">아시아송페스티벌<br><span style="font-size:12px;color:var(--gold-2);letter-spacing:.08em;font-weight:600;">ASIA SONG FESTIVAL</span></b>
-            </div>
+            <img src="assets/img/portfolio/perf-asf.jpg" alt="아시아송페스티벌 무대">
           </div>
           <div class="cbody">
             <div class="yr">2013 – 2015 · 10th–12th</div>
             <h4><span class="t-ko">아시아송페스티벌</span><span class="t-en">Asia Song Festival</span></h4>
             <p class="t-ko">잠실주경기장 · 프로덕션</p><p class="t-en">Jamsil Main Stadium · Production</p>
-            <div class="chips"><span class="chip">EXO</span><span class="chip">BTS</span><span class="chip">Red Velvet</span><span class="chip">TWICE</span><span class="chip">GOT7</span><span class="chip">SEVENTEEN</span></div>
           </div>
         </div>
-        <div class="card">
+        <div class="card photo">
           <div class="cmedia"><span class="tag t-ko">클래식</span><span class="tag t-en">Classical</span>
-            <div style="width:100%;height:100%;background:linear-gradient(155deg,#1c1512,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
-              <b style="font-size:18px;font-weight:800;line-height:1.4;">월드유니온오케스트라<br>슈퍼클래식<br><span style="font-size:12px;color:var(--gold-2);letter-spacing:.06em;font-weight:600;">WORLD UNION ORCHESTRA</span></b>
-            </div>
+            <img src="assets/img/portfolio/perf-wuo.jpg" alt="월드유니온오케스트라 슈퍼클래식 공연장">
           </div>
           <div class="cbody">
             <div class="yr">2024</div>
             <h4><span class="t-ko">김호중 &amp; 프리마돈나</span><span class="t-en">Kim Ho-joong &amp; Prima Donna</span></h4>
             <p class="t-ko">올림픽체조경기장 · 기획/프로덕션</p><p class="t-en">Olympic Gymnastics Arena · Planning &amp; Production</p>
-            <div class="chips"><span class="chip">Wien &amp; Berlin Phil.</span><span class="chip">New York Phil.</span><span class="chip">Royal Concertgebouw</span></div>
+            <div class="chips"><span class="chip">Wien &amp; Berlin Phil</span><span class="chip">New York Phil</span><span class="chip">Royal Concertgebouw</span></div>
           </div>
         </div>
-        <div class="card">
+        <div class="card photo">
           <div class="cmedia"><span class="tag t-ko">페스티벌</span><span class="tag t-en">Festival</span>
-            <div style="width:100%;height:100%;background:linear-gradient(155deg,#221a12,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
-              <b style="font-size:19px;font-weight:800;line-height:1.4;">인천공항<br>스카이페스티벌</b>
-            </div>
+            <img src="assets/img/portfolio/perf-sky.jpg" alt="인천공항 스카이페스티벌 무대">
           </div>
           <div class="cbody">
             <div class="yr">2017 – 2018 · 12th–13th</div>
             <h4><span class="t-ko">인천공항 스카이페스티벌</span><span class="t-en">Incheon Airport Sky Festival</span></h4>
             <p class="t-ko">인천공항 잔디광장 · 프로덕션</p><p class="t-en">Incheon Airport Lawn Square · Production</p>
-            <div class="chips"><span class="chip">EXO</span><span class="chip">NCT 127</span><span class="chip">2PM</span><span class="chip">Wanna One</span></div>
           </div>
         </div>
-        <div class="card">
+        <div class="card photo">
           <div class="cmedia"><span class="tag t-ko">국가행사</span><span class="tag t-en">National Event</span>
-            <div style="width:100%;height:100%;background:linear-gradient(155deg,#1e1a12,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
-              <b style="font-size:18px;font-weight:800;line-height:1.4;">2018 평창동계올림픽<br>감사대축제</b>
-            </div>
+            <img src="assets/img/portfolio/perf-pyeongchang.jpg" alt="2018 평창동계올림픽 감사대축제 불꽃">
           </div>
           <div class="cbody">
             <div class="yr">2018</div>
             <h4><span class="t-ko">평창동계올림픽 감사대축제</span><span class="t-en">PyeongChang Winter Olympics Thanksgiving Festival</span></h4>
             <p class="t-ko">평창 알펜시아 · 프로덕션</p><p class="t-en">PyeongChang Alpensia · Production</p>
-            <div class="chips"><span class="chip">이승철</span><span class="chip">BTOB</span><span class="chip">WJSN</span></div>
           </div>
         </div>
-        <div class="card">
+        <div class="card photo">
           <div class="cmedia"><span class="tag t-ko">클래식</span><span class="tag t-en">Classical</span>
-            <div style="width:100%;height:100%;background:linear-gradient(155deg,#1c1512,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
-              <b style="font-size:18px;font-weight:800;line-height:1.4;">빈필하모닉오케스트라<br>앙상블<br><span style="font-size:12px;color:var(--gold-2);letter-spacing:.06em;font-weight:600;">VIENNA PHILHARMONIC</span></b>
-            </div>
+            <img src="assets/img/portfolio/perf-vienna.jpg" alt="빈필하모닉오케스트라 앙상블">
           </div>
           <div class="cbody">
             <div class="yr">2019 · 2020 · 2024</div>
@@ -532,11 +543,9 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
             <p class="t-ko">기획 / 프로덕션</p><p class="t-en">Planning &amp; Production</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card photo">
           <div class="cmedia"><span class="tag t-ko">해외공연</span><span class="tag t-en">Overseas</span>
-            <div style="width:100%;height:100%;background:linear-gradient(155deg,#241a12,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
-              <b style="font-size:20px;font-weight:800;line-height:1.4;">난타<br>비엔나 공연</b>
-            </div>
+            <img src="assets/img/portfolio/perf-nanta.jpg" alt="난타 비엔나 공연">
           </div>
           <div class="cbody">
             <div class="yr">2012</div>
@@ -582,8 +591,8 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
 
     <!-- EXHIBITION -->
     <div class="tabpanel" id="panel-exh">
-      <p class="panel-intro t-ko">서울시립미술관, 국립현대미술관, 국립중앙박물관 등과 함께 샤갈·피카소·모네·투탕카멘 등 세계적 거장의 작품을 소개해온 국제 블록버스터 특별전 시리즈입니다.</p>
-      <p class="panel-intro t-en">A series of international blockbuster exhibitions bringing world-renowned masters — Chagall, Picasso, Monet, Tutankhamun — to Korea in partnership with the Seoul Museum of Art, MMCA, the National Museum of Korea and more.</p>
+      <p class="panel-intro t-ko">서울시립미술관 · 국립현대미술관 · 국립중앙박물관 등과 함께 샤갈·피카소·모네·투탕카멘 등 세계적 거장의 작품을 소개해온 국제 블록버스터 특별전 시리즈입니다</p>
+      <p class="panel-intro t-en">A series of international blockbuster exhibitions bringing world-renowned masters — Chagall · Picasso · Monet · Tutankhamun — to Korea in partnership with the Seoul Museum of Art · MMCA · the National Museum of Korea and more</p>
       <div class="cards">
         <div class="card">
           <div class="cmedia"><span class="tag t-ko">120점 · 40만 관객</span><span class="tag t-en">120 works · 400K visitors</span><img src="assets/img/poster-chagall.jpg" alt="Chagall 특별전"></div>
@@ -651,24 +660,37 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
 
     <!-- TV PRODUCTION -->
     <div class="tabpanel" id="panel-tv">
-      <p class="panel-intro t-ko">2000년 설립 이래 KBS 정규 프로그램을 제작해왔으며, KBS World를 통해 7,000편이 넘는 한국 방송 콘텐츠를 세계에 영어로 송출했습니다.</p>
-      <p class="panel-intro t-en">Since 2000, DUMIR has produced regular KBS programs and, through KBS World, delivered over 7,000 English-subtitled episodes of Korean broadcast content worldwide.</p>
+      <p class="panel-intro t-ko">2000년 설립 이래 KBS 정규 프로그램을 제작해왔으며 KBS World를 통해 7,000편이 넘는 한국 방송 콘텐츠를 세계에 영어로 송출했습니다</p>
+      <p class="panel-intro t-en">Since 2000 DUMIR has produced regular KBS programs and through KBS World delivered over 7,000 English-subtitled episodes of Korean broadcast content worldwide</p>
       <div class="cards">
-        <div class="card text-card"><div class="cmedia"><b class="t-ko">도전! 지구탐험대</b><b class="t-en">Challenge! Earth Expedition</b><span>2000 – 2005 · KBS2TV</span></div></div>
-        <div class="card text-card"><div class="cmedia"><b class="t-ko">체험 삶의 현장</b><b class="t-en">Experience the Field of Life</b><span>2005 – 2012 · KBS2TV</span></div></div>
-        <div class="card text-card"><div class="cmedia"><b class="t-ko">세상의 아침</b><b class="t-en">Morning of the World</b><span>2001 – 2009 · KBS2TV</span></div></div>
-        <div class="card text-card"><div class="cmedia"><b class="t-ko">다큐 3일</b><b class="t-en">Documentary 3 Days</b><span>2010 – 2016 · KBS2TV</span></div></div>
-        <div class="card text-card"><div class="cmedia"><b class="t-ko">6시 내고향</b><b class="t-en">6 O'Clock My Hometown</b><span>2003 – 2012 · KBS1TV</span></div></div>
-        <div class="card">
+        <div class="card photo">
+          <div class="cmedia"><img src="assets/img/portfolio/tv-dojeon.jpg" alt="도전! 지구탐험대"></div>
+          <div class="cbody"><div class="yr">2000 – 2005 · KBS2TV</div><h4><span class="t-ko">도전! 지구탐험대</span><span class="t-en">Challenge! Earth Expedition</span></h4></div>
+        </div>
+        <div class="card photo">
+          <div class="cmedia"><img src="assets/img/portfolio/tv-chehum.jpg" alt="체험 삶의 현장"></div>
+          <div class="cbody"><div class="yr">2005 – 2012 · KBS2TV</div><h4><span class="t-ko">체험 삶의 현장</span><span class="t-en">Experience the Field of Life</span></h4></div>
+        </div>
+        <div class="card photo">
+          <div class="cmedia"><img src="assets/img/portfolio/tv-morning.jpg" alt="세상의 아침"></div>
+          <div class="cbody"><div class="yr">2001 – 2009 · KBS2TV</div><h4><span class="t-ko">세상의 아침</span><span class="t-en">Morning of the World</span></h4></div>
+        </div>
+        <div class="card photo">
+          <div class="cmedia"><img src="assets/img/portfolio/tv-docu3.jpg" alt="다큐 3일"></div>
+          <div class="cbody"><div class="yr">2010 – 2016 · KBS2TV</div><h4><span class="t-ko">다큐 3일</span><span class="t-en">Documentary 3 Days</span></h4></div>
+        </div>
+        <div class="card photo">
+          <div class="cmedia"><img src="assets/img/portfolio/tv-hometown.jpg" alt="6시 내고향"></div>
+          <div class="cbody"><div class="yr">2003 – 2012 · KBS1TV</div><h4><span class="t-ko">6시 내고향</span><span class="t-en">6 O'Clock My Hometown</span></h4></div>
+        </div>
+        <div class="card photo">
           <div class="cmedia"><span class="tag">7,000+ EP</span>
-            <div style="width:100%;height:100%;background:linear-gradient(155deg,#1c1512,#0a0908);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;">
-              <b style="font-size:18px;font-weight:800;line-height:1.5;">KBS World TV<br><span style="font-size:12px;color:var(--gold-2);letter-spacing:.06em;font-weight:600;">ENGLISH BROADCAST</span></b>
-            </div>
+            <img src="assets/img/portfolio/tv-kbsworld.jpg" alt="KBS World TV">
           </div>
           <div class="cbody">
             <div class="yr">2005 – 2016</div>
             <h4><span class="t-ko">KBS World TV 영어방송 재제작</span><span class="t-en">KBS World English Re-production</span></h4>
-            <p class="t-ko">7,000편 영어 자막 방송 재제작(English Text Caption)</p><p class="t-en">7,000+ episodes re-produced with English text captions</p>
+            <p class="t-ko">7,000편 영어 자막 방송 재제작 (English Text Caption)</p><p class="t-en">7,000+ episodes re-produced with English text captions</p>
             <div class="chips"><span class="chip">2 Days &amp; 1 Night</span><span class="chip">Immortal Songs</span><span class="chip">Boys Over Flowers</span><span class="chip">Return of Superman</span><span class="chip">The Great Merchant</span></div>
           </div>
         </div>
@@ -680,7 +702,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
           <div class="arc-row"><span class="arc-yr">2000–05</span><span class="arc-name t-ko">도전! 지구탐험대</span><span class="arc-name t-en">Challenge! Earth Expedition</span><span class="arc-venue">KBS2TV</span></div>
           <div class="arc-row"><span class="arc-yr">2005–12</span><span class="arc-name t-ko">체험 삶의 현장</span><span class="arc-name t-en">Experience the Field of Life</span><span class="arc-venue">KBS2TV</span></div>
           <div class="arc-row"><span class="arc-yr">2001–09</span><span class="arc-name t-ko">세상의 아침</span><span class="arc-name t-en">Morning of the World</span><span class="arc-venue">KBS2TV</span></div>
-          <div class="arc-row"><span class="arc-yr">2005–12</span><span class="arc-name t-ko">TV 문화지대, 한국의 미</span><span class="arc-name t-en">TV Culture Zone, Beauty of Korea</span><span class="arc-venue">KBS1TV</span></div>
+          <div class="arc-row"><span class="arc-yr">2005–12</span><span class="arc-name t-ko">TV 문화지대 · 한국의 미</span><span class="arc-name t-en">TV Culture Zone · Beauty of Korea</span><span class="arc-venue">KBS1TV</span></div>
           <div class="arc-row"><span class="arc-yr">2010–16</span><span class="arc-name t-ko">다큐 3일</span><span class="arc-name t-en">Documentary 3 Days</span><span class="arc-venue">KBS2TV</span></div>
           <div class="arc-row"><span class="arc-yr">2003–12</span><span class="arc-name t-ko">6시 내고향</span><span class="arc-name t-en">6 O'Clock My Hometown</span><span class="arc-venue">KBS1TV</span></div>
           <div class="arc-row"><span class="arc-yr">2000–10</span><span class="arc-name t-ko">클릭! 날씨와 생활</span><span class="arc-name t-en">Click! Weather and Life</span><span class="arc-venue">KBS2TV</span></div>
@@ -692,15 +714,33 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
 
     <!-- PROMOTION -->
     <div class="tabpanel" id="panel-promo">
-      <p class="panel-intro t-ko">공공기관과 기업의 홍보영상 제작부터 지역축제, 컨벤션, 스포츠 이벤트 연출까지 — 콘텐츠가 필요한 모든 현장에 두미르가 있습니다.</p>
-      <p class="panel-intro t-en">From promotional films for public institutions and enterprises to regional festivals, conventions and sports events — DUMIR is present wherever content is needed.</p>
+      <p class="panel-intro t-ko">공공기관과 기업의 홍보영상 제작부터 지역축제 · 컨벤션 · 스포츠 이벤트 연출까지 — 콘텐츠가 필요한 모든 현장에 두미르가 있습니다</p>
+      <p class="panel-intro t-en">From promotional films for public institutions and enterprises to regional festivals · conventions and sports events — DUMIR is present wherever content is needed</p>
       <div class="cards">
-        <div class="card text-card"><div class="cmedia"><b class="t-ko">국립극장 홍보영화</b><b class="t-en">National Theater of Korea</b><span>2021</span></div></div>
-        <div class="card text-card"><div class="cmedia"><b class="t-ko">국립아시아문화전당 홍보영화</b><b class="t-en">Asia Culture Center</b><span>2016</span></div></div>
-        <div class="card text-card"><div class="cmedia"><b class="t-ko">전남도립미술관 홍보영화</b><b class="t-en">Jeonnam Museum of Art</b><span>2021</span></div></div>
-        <div class="card text-card"><div class="cmedia"><b class="t-ko">공공 인프라 홍보영화</b><b class="t-en">Public Infrastructure Films</b><span class="t-ko">한국도로공사 · 인천대교 · 한국가스공사</span><span class="t-en">Korea Expressway · Incheon Bridge · Korea Gas Safety</span></div></div>
-        <div class="card text-card"><div class="cmedia"><b class="t-ko">지역축제 연출</b><b class="t-en">Regional Festivals</b><span class="t-ko">강릉단오제 · 김제 지평선축제 · 수원화성 행궁축제</span><span class="t-en">Gangneung Danoje · Gimje Horizon · Suwon Hwaseong</span></div></div>
-        <div class="card text-card"><div class="cmedia"><b class="t-ko">컨벤션 · 스포츠 이벤트</b><b class="t-en">Convention &amp; Sports Events</b><span class="t-ko">대학입학정보박람회 · 전국산악자전거대회 · 보신각 타종행사</span><span class="t-en">College Fair · MTB Championship · Bosingak Bell-Ringing</span></div></div>
+        <div class="card photo">
+          <div class="cmedia"><img src="assets/img/portfolio/promo-ntok.jpg" alt="국립극장 홍보영화"></div>
+          <div class="cbody"><div class="yr">2021</div><h4><span class="t-ko">국립극장 홍보영화</span><span class="t-en">National Theater of Korea</span></h4></div>
+        </div>
+        <div class="card photo">
+          <div class="cmedia"><img src="assets/img/portfolio/promo-acc.jpg" alt="국립아시아문화전당 홍보영화"></div>
+          <div class="cbody"><div class="yr">2016</div><h4><span class="t-ko">국립아시아문화전당 홍보영화</span><span class="t-en">Asia Culture Center</span></h4></div>
+        </div>
+        <div class="card photo">
+          <div class="cmedia"><img src="assets/img/portfolio/promo-jmoa.jpg" alt="전남도립미술관 홍보영화"></div>
+          <div class="cbody"><div class="yr">2021</div><h4><span class="t-ko">전남도립미술관 홍보영화</span><span class="t-en">Jeonnam Museum of Art</span></h4></div>
+        </div>
+        <div class="card photo">
+          <div class="cmedia"><img src="assets/img/portfolio/promo-infra.jpg" alt="공공 인프라 홍보영화"></div>
+          <div class="cbody"><div class="yr t-ko">한국도로공사 · 인천대교 · 한국가스공사</div><div class="yr t-en">Korea Expressway · Incheon Bridge · Korea Gas</div><h4><span class="t-ko">공공 인프라 홍보영화</span><span class="t-en">Public Infrastructure Films</span></h4></div>
+        </div>
+        <div class="card photo">
+          <div class="cmedia"><img src="assets/img/portfolio/promo-festival.jpg" alt="지역축제 연출"></div>
+          <div class="cbody"><div class="yr t-ko">강릉단오제 · 김제 지평선축제 · 수원화성 행궁축제</div><div class="yr t-en">Gangneung Danoje · Gimje Horizon · Suwon Hwaseong</div><h4><span class="t-ko">지역축제 연출</span><span class="t-en">Regional Festivals</span></h4></div>
+        </div>
+        <div class="card photo">
+          <div class="cmedia"><img src="assets/img/portfolio/promo-convention.jpg" alt="컨벤션 · 스포츠 이벤트"></div>
+          <div class="cbody"><div class="yr t-ko">대학입학정보박람회 · 전국산악자전거대회 · 보신각 타종행사</div><div class="yr t-en">College Fair · MTB Championship · Bosingak Bell-Ringing</div><h4><span class="t-ko">컨벤션 · 스포츠 이벤트</span><span class="t-en">Convention &amp; Sports Events</span></h4></div>
+        </div>
       </div>
 
       <details class="archive">
@@ -736,11 +776,68 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
   <div class="wrap">
     <div class="eyebrow"><span class="t-ko">파트너</span><span class="t-en">Partners</span></div>
     <h2 class="title" style="margin-bottom:14px;"><span class="t-ko">신뢰로 함께해온 기관들</span><span class="t-en">Institutions We've Worked With</span></h2>
-    <p class="lede" style="margin-bottom:44px;"><span class="t-ko">정부기관, 방송사, 언론사, 미술관·공연장, 국내 대기업까지 — 두미르는 오랜 시간 신뢰를 쌓아온 파트너들과 함께합니다.</span><span class="t-en">From government bodies and broadcasters to press, museums, concert halls and leading enterprises — DUMIR has built lasting trust with its partners.</span></p>
-    <div class="partners-band reveal">
-      <img src="assets/img/partners-band.png" alt="DUMIR Partners">
+    <p class="lede" style="margin-bottom:44px;"><span class="t-ko">정부기관 · 방송사 · 언론사 · 미술관·공연장 · 국내 대기업까지 — 두미르는 오랜 시간 신뢰를 쌓아온 파트너들과 함께합니다</span><span class="t-en">From government bodies and broadcasters to press · museums · concert halls and leading enterprises — DUMIR has built lasting trust with its partners</span></p>
+    <div class="logo-marquee-wrap reveal">
+      <div class="logo-marquee">
+        <div class="logo-cell"><img src="assets/img/partners/mcst.png" alt="문화체육관광부"></div>
+        <div class="logo-cell"><img src="assets/img/partners/mofa.png" alt="외교부"></div>
+        <div class="logo-cell"><img src="assets/img/partners/seoul.png" alt="서울특별시"></div>
+        <div class="logo-cell"><img src="assets/img/partners/kspo.png" alt="국민체육진흥공단"></div>
+        <div class="logo-cell"><img src="assets/img/partners/kspoco.png" alt="한국체육산업개발"></div>
+        <div class="logo-cell"><img src="assets/img/partners/kbs.png" alt="KBS"></div>
+        <div class="logo-cell"><img src="assets/img/partners/kbs-america.png" alt="KBS America"></div>
+        <div class="logo-cell"><img src="assets/img/partners/kbs-media.png" alt="KBS Media"></div>
+        <div class="logo-cell"><img src="assets/img/partners/kbs-business.png" alt="KBS Business"></div>
+        <div class="logo-cell"><img src="assets/img/partners/chosun.png" alt="조선일보"></div>
+        <div class="logo-cell"><img src="assets/img/partners/hankook.png" alt="한국일보"></div>
+        <div class="logo-cell"><img src="assets/img/partners/nmk.png" alt="국립중앙박물관"></div>
+        <div class="logo-cell"><img src="assets/img/partners/mmca.png" alt="국립현대미술관"></div>
+        <div class="logo-cell"><img src="assets/img/partners/mcst.png" alt="문화체육관광부"></div>
+        <div class="logo-cell"><img src="assets/img/partners/mofa.png" alt="외교부"></div>
+        <div class="logo-cell"><img src="assets/img/partners/seoul.png" alt="서울특별시"></div>
+        <div class="logo-cell"><img src="assets/img/partners/kspo.png" alt="국민체육진흥공단"></div>
+        <div class="logo-cell"><img src="assets/img/partners/kspoco.png" alt="한국체육산업개발"></div>
+        <div class="logo-cell"><img src="assets/img/partners/kbs.png" alt="KBS"></div>
+        <div class="logo-cell"><img src="assets/img/partners/kbs-america.png" alt="KBS America"></div>
+        <div class="logo-cell"><img src="assets/img/partners/kbs-media.png" alt="KBS Media"></div>
+        <div class="logo-cell"><img src="assets/img/partners/kbs-business.png" alt="KBS Business"></div>
+        <div class="logo-cell"><img src="assets/img/partners/chosun.png" alt="조선일보"></div>
+        <div class="logo-cell"><img src="assets/img/partners/hankook.png" alt="한국일보"></div>
+        <div class="logo-cell"><img src="assets/img/partners/nmk.png" alt="국립중앙박물관"></div>
+        <div class="logo-cell"><img src="assets/img/partners/mmca.png" alt="국립현대미술관"></div>
+      </div>
     </div>
-    <p class="partner-note"><span class="t-ko">문화체육관광부 · 외교부 · 산업통상자원부 · 서울특별시 · 경기도 · 충청남도 · 전라남도 등 정부·지자체 기관을 비롯해 KBS 계열사, 조선일보·중앙일보·한국일보·MBN·YTN 등 언론사와 함께합니다.</span><span class="t-en">Including the Ministry of Culture, Sports and Tourism, Ministry of Foreign Affairs, Ministry of Trade, Industry and Energy, Seoul Metropolitan Government, and regional governments, alongside the KBS media group and major press including Chosun Ilbo, JoongAng Ilbo, Hankook Ilbo, MBN and YTN.</span></p>
+    <div class="logo-marquee-wrap rev reveal">
+      <div class="logo-marquee">
+        <div class="logo-cell"><img src="assets/img/partners/sema.png" alt="서울시립미술관"></div>
+        <div class="logo-cell"><img src="assets/img/partners/acc.png" alt="국립아시아문화전당"></div>
+        <div class="logo-cell"><img src="assets/img/partners/sac.png" alt="예술의전당"></div>
+        <div class="logo-cell"><img src="assets/img/partners/sejong.png" alt="세종문화회관"></div>
+        <div class="logo-cell"><img src="assets/img/partners/lotte-hall.png" alt="롯데콘서트홀"></div>
+        <div class="logo-cell"><img src="assets/img/partners/ntok.png" alt="국립극장"></div>
+        <div class="logo-cell"><img src="assets/img/partners/jmoa.png" alt="전남도립미술관"></div>
+        <div class="logo-cell"><img src="assets/img/partners/jeonnam.png" alt="전라남도"></div>
+        <div class="logo-cell"><img src="assets/img/partners/samsung.png" alt="삼성"></div>
+        <div class="logo-cell"><img src="assets/img/partners/hyundai.png" alt="현대자동차그룹"></div>
+        <div class="logo-cell"><img src="assets/img/partners/hanwha.png" alt="한화"></div>
+        <div class="logo-cell"><img src="assets/img/partners/posco.png" alt="포스코"></div>
+        <div class="logo-cell"><img src="assets/img/partners/korean-air.png" alt="대한항공"></div>
+        <div class="logo-cell"><img src="assets/img/partners/sema.png" alt="서울시립미술관"></div>
+        <div class="logo-cell"><img src="assets/img/partners/acc.png" alt="국립아시아문화전당"></div>
+        <div class="logo-cell"><img src="assets/img/partners/sac.png" alt="예술의전당"></div>
+        <div class="logo-cell"><img src="assets/img/partners/sejong.png" alt="세종문화회관"></div>
+        <div class="logo-cell"><img src="assets/img/partners/lotte-hall.png" alt="롯데콘서트홀"></div>
+        <div class="logo-cell"><img src="assets/img/partners/ntok.png" alt="국립극장"></div>
+        <div class="logo-cell"><img src="assets/img/partners/jmoa.png" alt="전남도립미술관"></div>
+        <div class="logo-cell"><img src="assets/img/partners/jeonnam.png" alt="전라남도"></div>
+        <div class="logo-cell"><img src="assets/img/partners/samsung.png" alt="삼성"></div>
+        <div class="logo-cell"><img src="assets/img/partners/hyundai.png" alt="현대자동차그룹"></div>
+        <div class="logo-cell"><img src="assets/img/partners/hanwha.png" alt="한화"></div>
+        <div class="logo-cell"><img src="assets/img/partners/posco.png" alt="포스코"></div>
+        <div class="logo-cell"><img src="assets/img/partners/korean-air.png" alt="대한항공"></div>
+      </div>
+    </div>
+    <p class="partner-note"><span class="t-ko">문화체육관광부 · 외교부 · 산업통상자원부 · 서울특별시 · 경기도 · 충청남도 · 전라남도 등 정부·지자체 기관을 비롯해 KBS 계열사 · 조선일보 · 중앙일보 · 한국일보 · MBN · YTN 등 언론사와 함께합니다</span><span class="t-en">Including the Ministry of Culture Sports and Tourism · Ministry of Foreign Affairs · Ministry of Trade Industry and Energy · Seoul Metropolitan Government and regional governments alongside the KBS media group and major press including Chosun Ilbo · JoongAng Ilbo · Hankook Ilbo · MBN and YTN</span></p>
   </div>
 </section>
 
@@ -765,17 +862,17 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
         </div>
         <div class="contact-item">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
-          <div><b>Email</b><div><a href="mailto:dumir2000@hanmail.net">dumir2000@hanmail.net</a><br><a href="mailto:sa-i-da@hanmail.net">sa-i-da@hanmail.net</a></div></div>
+          <div><b>Email</b><div><a href="mailto:dumir2000@dumir.co.kr">dumir2000@dumir.co.kr</a></div></div>
         </div>
       </div>
       <div class="map-card reveal">
         <div>
           <h4><span class="t-ko">방문 상담 안내</span><span class="t-en">Visit Us</span></h4>
-          <p class="t-ko">사업 제휴, 공연·전시 기획, 방송·홍보 영상 제작 문의는 이메일 또는 전화로 편하게 연락 주세요. 카카오맵/네이버지도에서 "두미르"로 검색하시면 위치를 바로 확인하실 수 있습니다.</p>
-          <p class="t-en">For partnership, performance/exhibition planning, or broadcast &amp; promotional video inquiries, please reach us by phone or email. Search "DUMIR" (두미르) on Kakao Map or Naver Map to find our location.</p>
+          <p class="t-ko">사업 제휴 · 공연·전시 기획 · 방송·홍보 영상 제작 문의는 이메일 또는 전화로 편하게 연락 주세요 &nbsp;카카오맵/네이버지도에서 "두미르"로 검색하시면 위치를 바로 확인하실 수 있습니다</p>
+          <p class="t-en">For partnership · performance/exhibition planning or broadcast &amp; promotional video inquiries please reach us by phone or email &nbsp;Search "DUMIR" (두미르) on Kakao Map or Naver Map to find our location</p>
         </div>
         <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <a class="btn solid" href="mailto:dumir2000@hanmail.net"><span class="t-ko">이메일 문의</span><span class="t-en">Email Us</span></a>
+          <a class="btn solid" href="mailto:dumir2000@dumir.co.kr"><span class="t-ko">이메일 문의</span><span class="t-en">Email Us</span></a>
           <a class="btn" target="_blank" rel="noopener" href="https://map.kakao.com/link/search/서울특별시 강서구 양천로 615">
             <span class="t-ko">카카오맵 보기</span><span class="t-en">Open Kakao Map</span>
           </a>
@@ -796,16 +893,16 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; background:var(--i
       <div class="foot-col">
         <b class="t-ko">회사정보</b><b class="t-en">Company</b>
         <p class="t-ko">주식회사 두미르 · 대표이사 고필규</p>
-        <p class="t-en">DUMIR Co., Ltd. · CEO Go Pil-gyu</p>
+        <p class="t-en">DUMIR Co Ltd · CEO KO PILL KYU</p>
         <p>107-81-81661</p>
         <p class="t-ko">(07545) 서울특별시 강서구 양천로 615, 3층</p>
         <p class="t-en">3F, 615 Yangcheon-ro, Gangseo-gu, Seoul</p>
       </div>
       <div class="foot-col">
         <b class="t-ko">연락처</b><b class="t-en">Contact</b>
-        <p>Tel. 02-782-7015</p>
-        <p>Fax. 02-782-7016</p>
-        <p>dumir2000@hanmail.net</p>
+        <p>Tel 02-782-7015</p>
+        <p>Fax 02-782-7016</p>
+        <p>dumir2000@dumir.co.kr</p>
       </div>
       <div class="foot-col">
         <b class="t-ko">바로가기</b><b class="t-en">Quick Links</b>
